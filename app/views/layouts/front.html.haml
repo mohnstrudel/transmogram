@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %title Transmogram - Your World of Warcraft Transmogrification Resource
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag    'front', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'front', 'data-turbolinks-track': 'reload'
+
+  %body
+    = yield
