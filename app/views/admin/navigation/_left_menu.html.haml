@@ -1,0 +1,69 @@
+%aside.main-sidebar
+  / sidebar
+  %section.sidebar
+    .user-profile
+      .ulogo
+        %a{:href => "index.html"}
+          / logo for regular state and mobile devices
+          %h2
+            %b> CrmX
+            Admin
+      .profile-pic
+        %img{:alt => "user", :src => asset_path("default/user5-128x128.jpg")}/
+        .profile-info
+          %h4 John Doe
+          .list-icons-item.dropdown
+            %a.list-icons-item.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              %span.badge.badge-ring.fill.badge-primary.mr-2>
+              Online
+            .dropdown-menu.dropdown-menu-right
+              %a.dropdown-item{:href => "#"} Update data
+              %a.dropdown-item{:href => "#"} Detailed log
+              %a.dropdown-item{:href => "#"} Statistics
+              %a.dropdown-item{:href => "#"} Clear list
+    / sidebar menu
+    %ul.sidebar-menu{"data-widget" => "tree"}
+      %li.header.nav-small-cap PERSONAL
+      %li.treeview.active
+        %a{:href => "#"}
+          %i.ti-dashboard
+          %span Dashboard
+          %span.pull-right-container
+            %i.fa.fa-angle-right.pull-right
+        %ul.treeview-menu
+          %li.active
+            %a{:href => "index.html"}
+              %i.ti-more>
+              Main Dashboard
+          %li
+            %a{:href => "index-2.html"}
+              %i.ti-more>
+              e-Commerce Dashboard
+          %li
+            %a{:href => "index-3.html"}
+              %i.ti-more>
+              Analytics
+          %li
+            %a{:href => "index-4.html"}
+              %i.ti-more>
+              Hospital
+      %li.header.nav-small-cap APPS
+      %li.treeview
+        %a{:href => "#"}
+          %i.ti-email
+          %span Users
+          %span.pull-right-container
+            %i.fa.fa-angle-right.pull-right
+        %ul.treeview-menu
+          %li
+            %a{:href => "pages/mailbox_inbox.html"}
+              %i.ti-more>
+              Inbox
+          %li
+            %a{:href => "pages/mailbox_compose.html"}
+              %i.ti-more>
+              Compose
+          %li
+            %a{:href => "pages/mailbox_read_mail.html"}
+              %i.ti-more>
+              Read

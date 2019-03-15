@@ -1,0 +1,20 @@
+%ul#one.header-menu
+  / %li
+  /   %a{:href => "activity.html"} Activity
+  / %li
+  /   %a{:href => "search.html"} Discover
+  /   %ul
+  /     %li
+  /       %a{:href => "search.html"} Explore
+  /     %li
+  /       %a{:href => "people.html"} People
+  /     %li
+  /       %a{:href => "gallery.html"} Galleries
+  / %li
+  /   %a{:href => "author-login.html"} My Portfolio
+  / %li
+  /   %a{:href => "site-map.html"} Site Map
+  / %li
+  /   %a{:href => "organization.html"} Organization
+  %li#ad-work-li
+    =link_to 'Add Work', new_post_path, class: 'btn btn-large color-1', id: 'add-work-btn'

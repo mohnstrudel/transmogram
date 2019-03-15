@@ -1,23 +1,23 @@
 %body.hold-transition.light-skin.sidebar-mini.theme-fruit
   .wrapper
     .art-bg
-      %img.art-img.light-img{:alt => "", :src => "../images/art1.svg"}/
-      %img.art-img.dark-img{:alt => "", :src => "../images/art2.svg"}/
+      %img.art-img.light-img{:alt => "", :src => asset_path("default/art1.svg")}/
+      %img.art-img.dark-img{:alt => "", :src => asset_path("default/art2.svg")}/
     %header.main-header
       / Logo
       %a.logo{:href => "index.html"}
         / mini logo
         .logo-mini
           %span.light-logo
-            %img{:alt => "logo", :src => "../images/logo-light.png"}/
+            %img{:alt => "logo", :src => asset_path("default/logo-light.png")}/
           %span.dark-logo
-            %img{:alt => "logo", :src => "../images/logo-dark.png"}/
+            %img{:alt => "logo", :src => asset_path("default/logo-dark.png")}/
         / logo
         .logo-lg
           %span.light-logo
-            %img{:alt => "logo", :src => "../images/logo-light-text.png"}/
+            %img{:alt => "logo", :src => asset_path("default/logo-light-text.png")}/
           %span.dark-logo
-            %img{:alt => "logo", :src => "../images/logo-dark-text.png"}/
+            %img{:alt => "logo", :src => asset_path("default/logo-dark-text.png")}/
       / Header Navbar
       %nav.navbar.navbar-static-top
         / Sidebar toggle button
@@ -51,7 +51,7 @@
                       / start message
                       %a{:href => "#"}
                         .pull-left
-                          %img.rounded-circle{:alt => "User Image", :src => "../images/user2-160x160.jpg"}/
+                          %img.rounded-circle{:alt => "User Image", :src => asset_path("default/user2-160x160.jpg")}/
                         .mail-contnet
                           %h4
                             Lorem Ipsum
@@ -63,7 +63,7 @@
                     %li
                       %a{:href => "#"}
                         .pull-left
-                          %img.rounded-circle{:alt => "User Image", :src => "../images/user3-128x128.jpg"}/
+                          %img.rounded-circle{:alt => "User Image", :src => asset_path("default/user3-128x128.jpg")}/
                         .mail-contnet
                           %h4
                             Nullam tempor
@@ -74,7 +74,7 @@
                     %li
                       %a{:href => "#"}
                         .pull-left
-                          %img.rounded-circle{:alt => "User Image", :src => "../images/user4-128x128.jpg"}/
+                          %img.rounded-circle{:alt => "User Image", :src => asset_path("default/user4-128x128.jpg")}/
                         .mail-contnet
                           %h4
                             Proin venenatis
@@ -85,7 +85,7 @@
                     %li
                       %a{:href => "#"}
                         .pull-left
-                          %img.rounded-circle{:alt => "User Image", :src => "../images/user3-128x128.jpg"}/
+                          %img.rounded-circle{:alt => "User Image", :src => asset_path("default/user3-128x128.jpg")}/
                         .mail-contnet
                           %h4
                             Praesent suscipit
@@ -96,7 +96,7 @@
                     %li
                       %a{:href => "#"}
                         .pull-left
-                          %img.rounded-circle{:alt => "User Image", :src => "../images/user4-128x128.jpg"}/
+                          %img.rounded-circle{:alt => "User Image", :src => asset_path("default/user4-128x128.jpg")}/
                         .mail-contnet
                           %h4
                             Donec tempor
@@ -154,12 +154,12 @@
             / User Account
             %li.dropdown.user.user-menu
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :title => "User"}
-                %img.user-image.rounded-circle{:alt => "User Image", :src => "../images/avatar/7.jpg"}/
+                %img.user-image.rounded-circle{:alt => "User Image", :src => asset_path("default/avatar/7.jpg")}/
               %ul.dropdown-menu.animated.flipInX
                 / User image
                 %li.user-header.bg-img{"data-overlay" => "3", :style => "background-image: url(../images/user-info.jpg)"}
                   .flexbox.align-self-center
-                    %img.float-left.rounded-circle{:alt => "User Image", :src => "../images/avatar/7.jpg"}/
+                    %img.float-left.rounded-circle{:alt => "User Image", :src => asset_path("default/avatar/7.jpg")}/
                     %h4.user-name.align-self-center
                       %span Samuel Brus
                       %small samuel@gmail.com
@@ -190,730 +190,7 @@
               %a{"data-toggle" => "control-sidebar", :href => "#", :title => "Setting"}
                 %i.fa.fa-cog.fa-spin
     / Left side column. contains the logo and sidebar
-    %aside.main-sidebar
-      / sidebar
-      %section.sidebar
-        .user-profile
-          .ulogo
-            %a{:href => "index.html"}
-              / logo for regular state and mobile devices
-              %h2
-                %b> CrmX
-                Admin
-          .profile-pic
-            %img{:alt => "user", :src => "../images/user5-128x128.jpg"}/
-            .profile-info
-              %h4 John Doe
-              .list-icons-item.dropdown
-                %a.list-icons-item.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                  %span.badge.badge-ring.fill.badge-primary.mr-2>
-                  Online
-                .dropdown-menu.dropdown-menu-right
-                  %a.dropdown-item{:href => "#"} Update data
-                  %a.dropdown-item{:href => "#"} Detailed log
-                  %a.dropdown-item{:href => "#"} Statistics
-                  %a.dropdown-item{:href => "#"} Clear list
-        / sidebar menu
-        %ul.sidebar-menu{"data-widget" => "tree"}
-          %li.header.nav-small-cap PERSONAL
-          %li.treeview.active
-            %a{:href => "#"}
-              %i.ti-dashboard
-              %span Dashboard
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li.active
-                %a{:href => "index.html"}
-                  %i.ti-more>
-                  Main Dashboard
-              %li
-                %a{:href => "index-2.html"}
-                  %i.ti-more>
-                  e-Commerce Dashboard
-              %li
-                %a{:href => "index-3.html"}
-                  %i.ti-more>
-                  Analytics
-              %li
-                %a{:href => "index-4.html"}
-                  %i.ti-more>
-                  Hospital
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-files
-              %span Layout Options
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/layout_boxed.html"}
-                  %i.ti-more>
-                  Boxed
-              %li
-                %a{:href => "pages/layout_fixed.html"}
-                  %i.ti-more>
-                  Fixed
-              %li
-                %a{:href => "pages/layout_collapsed_sidebar.html"}
-                  %i.ti-more>
-                  Mini Sidebar
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-direction-alt
-              %span Page Layouts
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/page_layout_inner_left_sidebar.html"}
-                  %i.ti-more>
-                  Inner Left Sidebar
-              %li
-                %a{:href => "pages/page_layout_inner_right_sidebar.html"}
-                  %i.ti-more>
-                  Inner Right Sidebar
-              %li
-                %a{:href => "pages/page_layout_inner_fixed_left_sidebar.html"}
-                  %i.ti-more>
-                  Inner Fixed Left Sidebar
-              %li
-                %a{:href => "pages/page_layout_inner_fixed_right_sidebar.html"}
-                  %i.ti-more>
-                  Inner Fixed Right Sidebar
-          %li.header.nav-small-cap APPS
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-email
-              %span Mailbox
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/mailbox_inbox.html"}
-                  %i.ti-more>
-                  Inbox
-              %li
-                %a{:href => "pages/mailbox_compose.html"}
-                  %i.ti-more>
-                  Compose
-              %li
-                %a{:href => "pages/mailbox_read_mail.html"}
-                  %i.ti-more>
-                  Read
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-user
-              %span Contact
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/contact_app_chat.html"}
-                  %i.ti-more>
-                  Chat app
-              %li
-                %a{:href => "pages/contact_app.html"}
-                  %i.ti-more>
-                  Contact / Employee
-              %li
-                %a{:href => "pages/contact_userlist_grid.html"}
-                  %i.ti-more>
-                  Userlist Grid
-              %li
-                %a{:href => "pages/contact_userlist.html"}
-                  %i.ti-more>
-                  Userlist
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-layout-grid2
-              %span Extra
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/extra_app_ticket.html"}
-                  %i.ti-more>
-                  Support Ticket
-              %li
-                %a{:href => "pages/extra_calendar.html"}
-                  %i.ti-more>
-                  Calendar
-              %li
-                %a{:href => "pages/extra_profile.html"}
-                  %i.ti-more>
-                  Profile
-              %li
-                %a{:href => "pages/extra_taskboard.html"}
-                  %i.ti-more>
-                  Project DashBoard
-          %li.header.nav-small-cap UI
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-pencil-alt
-              %span UI Elements
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/ui_badges.html"}
-                  %i.ti-more>
-                  Badges
-              %li
-                %a{:href => "pages/ui_border_utilities.html"}
-                  %i.ti-more>
-                  Border
-              %li
-                %a{:href => "pages/ui_buttons.html"}
-                  %i.ti-more>
-                  Buttons
-              %li
-                %a{:href => "pages/ui_color_utilities.html"}
-                  %i.ti-more>
-                  Color
-              %li
-                %a{:href => "pages/ui_dropdown.html"}
-                  %i.ti-more>
-                  Dropdown
-              %li
-                %a{:href => "pages/ui_dropdown_grid.html"}
-                  %i.ti-more>
-                  Dropdown Grid
-              %li
-                %a{:href => "pages/ui_typography.html"}
-                  %i.ti-more>
-                  Typography
-              %li
-                %a{:href => "pages/ui_progress_bars.html"}
-                  %i.ti-more>
-                  Progress Bars
-              %li
-                %a{:href => "pages/ui_grid.html"}
-                  %i.ti-more>
-                  Grid
-              %li
-                %a{:href => "pages/ui_ribbons.html"}
-                  %i.ti-more>
-                  Ribbons
-              %li
-                %a{:href => "pages/ui_sliders.html"}
-                  %i.ti-more>
-                  Sliders
-              %li
-                %a{:href => "pages/ui_tab.html"}
-                  %i.ti-more>
-                  Tabs
-              %li
-                %a{:href => "pages/ui_timeline.html"}
-                  %i.ti-more>
-                  Timeline
-              %li
-                %a{:href => "pages/ui_timeline_horizontal.html"}
-                  %i.ti-more>
-                  Horizontal Timeline
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-smallcap
-              %span Icons
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/icons_fontawesome.html"}
-                  %i.ti-more>
-                  Font Awesome
-              %li
-                %a{:href => "pages/icons_glyphicons.html"}
-                  %i.ti-more>
-                  Glyphicons
-              %li
-                %a{:href => "pages/icons_material.html"}
-                  %i.ti-more>
-                  Material Icons
-              %li
-                %a{:href => "pages/icons_themify.html"}
-                  %i.ti-more>
-                  Themify Icons
-              %li
-                %a{:href => "pages/icons_simpleline.html"}
-                  %i.ti-more>
-                  Simple Line Icons
-              %li
-                %a{:href => "pages/icons_cryptocoins.html"}
-                  %i.ti-more>
-                  Cryptocoins Icons
-              %li
-                %a{:href => "pages/icons_flag.html"}
-                  %i.ti-more>
-                  Flag Icons
-              %li
-                %a{:href => "pages/icons_weather.html"}
-                  %i.ti-more>
-                  Weather Icons
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-check-box
-              %span Components
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/component_bootstrap_switch.html"}
-                  %i.ti-more>
-                  Bootstrap Switch
-              %li
-                %a{:href => "pages/component_date_paginator.html"}
-                  %i.ti-more>
-                  Date Paginator
-              %li
-                %a{:href => "pages/component_media_advanced.html"}
-                  %i.ti-more>
-                  Advanced Medias
-              %li
-                %a{:href => "pages/component_modals.html"}
-                  %i.ti-more>
-                  Modals
-              %li
-                %a{:href => "pages/component_nestable.html"}
-                  %i.ti-more>
-                  Nestable
-              %li
-                %a{:href => "pages/component_notification.html"}
-                  %i.ti-more>
-                  Notification
-              %li
-                %a{:href => "pages/component_portlet_draggable.html"}
-                  %i.ti-more>
-                  Draggable Portlets
-              %li
-                %a{:href => "pages/component_sweatalert.html"}
-                  %i.ti-more>
-                  Sweet Alert
-              %li
-                %a{:href => "pages/component_rangeslider.html"}
-                  %i.ti-more>
-                  Range Slider
-              %li
-                %a{:href => "pages/component_rating.html"}
-                  %i.ti-more>
-                  Ratings
-              %li
-                %a{:href => "pages/component_animations.html"}
-                  %i.ti-more>
-                  Animations
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-package
-              %span Box Cards
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/box_cards.html"}
-                  %i.ti-more>
-                  User Card
-              %li
-                %a{:href => "pages/box_advanced.html"}
-                  %i.ti-more>
-                  Advanced Card
-              %li
-                %a{:href => "pages/box_basic.html"}
-                  %i.ti-more>
-                  Basic Card
-              %li
-                %a{:href => "pages/box_color.html"}
-                  %i.ti-more>
-                  Card Color
-              %li
-                %a{:href => "pages/box_group.html"}
-                  %i.ti-more>
-                  Card Group
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-palette
-              %span Widgets
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/widgets_blog.html"}
-                  %i.ti-more>
-                  Blog
-              %li
-                %a{:href => "pages/widgets_chart.html"}
-                  %i.ti-more>
-                  Chart
-              %li
-                %a{:href => "pages/widgets_list.html"}
-                  %i.ti-more>
-                  List
-              %li
-                %a{:href => "pages/widgets_social.html"}
-                  %i.ti-more>
-                  Social
-              %li
-                %a{:href => "pages/widgets_statistic.html"}
-                  %i.ti-more>
-                  Statistic
-              %li
-                %a{:href => "pages/widgets_weather.html"}
-                  %i.ti-more>
-                  Weather
-              %li
-                %a{:href => "pages/widgets.html"}
-                  %i.ti-more>
-                  Widgets
-          %li.header.nav-small-cap FORMS And TABLES
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-write
-              %span Forms
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/forms_advanced.html"}
-                  %i.ti-more>
-                  Advanced Elements
-              %li
-                %a{:href => "pages/forms_code_editor.html"}
-                  %i.ti-more>
-                  Code Editor
-              %li
-                %a{:href => "pages/forms_editor_markdown.html"}
-                  %i.ti-more>
-                  Markdown
-              %li
-                %a{:href => "pages/forms_editors.html"}
-                  %i.ti-more>
-                  Editors
-              %li
-                %a{:href => "pages/forms_validation.html"}
-                  %i.ti-more>
-                  Form Validation
-              %li
-                %a{:href => "pages/forms_wizard.html"}
-                  %i.ti-more>
-                  Form Wizard
-              %li
-                %a{:href => "pages/forms_general.html"}
-                  %i.ti-more>
-                  General Elements
-              %li
-                %a{:href => "pages/forms_mask.html"}
-                  %i.ti-more>
-                  Formatter
-              %li
-                %a{:href => "pages/forms_xeditable.html"}
-                  %i.ti-more>
-                  Xeditable Editor
-              %li
-                %a{:href => "pages/forms_dropzone.html"}
-                  %i.ti-more>
-                  Dropzone
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-layout-grid4
-              %span Tables
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/tables_simple.html"}
-                  %i.ti-more>
-                  Simple tables
-              %li
-                %a{:href => "pages/tables_data.html"}
-                  %i.ti-more>
-                  Data tables
-              %li
-                %a{:href => "pages/tables_editable.html"}
-                  %i.ti-more>
-                  Editable Tables
-              %li
-                %a{:href => "pages/tables_color.html"}
-                  %i.ti-more>
-                  Table Color
-          %li.header.nav-small-cap CHARTS
-          %li
-            %a{:href => "pages/charts_chartjs.html"}
-              %i.ti-stats-up
-              %span ChartJS
-          %li
-            %a{:href => "pages/charts_flot.html"}
-              %i.ti-pulse
-              %span Flot
-          %li
-            %a{:href => "pages/charts_inline.html"}
-              %i.ti-bar-chart
-              %span Inline charts
-          %li
-            %a{:href => "pages/charts_morris.html"}
-              %i.ti-stats-down
-              %span Morris
-          %li
-            %a{:href => "pages/charts_peity.html"}
-              %i.ti-pie-chart
-              %span Peity
-          %li
-            %a{:href => "pages/charts_chartist.html"}
-              %i.ti-bar-chart-alt
-              %span Chartist
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-stats-up
-              %span C3 Charts
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/charts_c3_axis.html"}
-                  %i.ti-more>
-                  Axis Chart
-              %li
-                %a{:href => "pages/charts_c3_bar.html"}
-                  %i.ti-more>
-                  Bar Chart
-              %li
-                %a{:href => "pages/charts_c3_data.html"}
-                  %i.ti-more>
-                  Data Chart
-              %li
-                %a{:href => "pages/charts_c3_line.html"}
-                  %i.ti-more>
-                  Line Chart
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-pie-chart
-              %span Echarts
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/charts_echarts_basic.html"}
-                  %i.ti-more>
-                  Basic Charts
-              %li
-                %a{:href => "pages/charts_echarts_bar.html"}
-                  %i.ti-more>
-                  Bar Chart
-              %li
-                %a{:href => "pages/charts_echarts_pie_doughnut.html"}
-                  %i.ti-more>
-                  Pie &amp; Doughnut Chart
-          %li.header.nav-small-cap EXTRA COMPONENTS
-          %li
-            %a{:href => "pages/email_index.html"}
-              %i.ti-envelope
-              %span Emails
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-map-alt
-              %span Map
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/map_google.html"}
-                  %i.ti-more>
-                  Google Map
-              %li
-                %a{:href => "pages/map_vector.html"}
-                  %i.ti-more>
-                  Vector Map
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-plug
-              %span Extension
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/extension_fullscreen.html"}
-                  %i.ti-more>
-                  Fullscreen
-              %li
-                %a{:href => "pages/extension_pace.html"}
-                  %i.ti-more>
-                  Pace
-          %li.header.nav-small-cap SAMPLE PAGES
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-shopping-cart
-              %span Ecommerce Pages
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/ecommerce_products.html"}
-                  %i.ti-more>
-                  Products
-              %li
-                %a{:href => "pages/ecommerce_cart.html"}
-                  %i.ti-more>
-                  Products Cart
-              %li
-                %a{:href => "pages/ecommerce_products_edit.html"}
-                  %i.ti-more>
-                  Products Edit
-              %li
-                %a{:href => "pages/ecommerce_details.html"}
-                  %i.ti-more>
-                  Product Details
-              %li
-                %a{:href => "pages/ecommerce_orders.html"}
-                  %i.ti-more>
-                  Product Orders
-              %li
-                %a{:href => "pages/ecommerce_checkout.html"}
-                  %i.ti-more>
-                  Products Checkout
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-shield
-              %span Authentication
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/auth_login.html"}
-                  %i.ti-more>
-                  Login
-              %li
-                %a{:href => "pages/auth_login2.html"}
-                  %i.ti-more>
-                  Login 2
-              %li
-                %a{:href => "pages/auth_register.html"}
-                  %i.ti-more>
-                  Register
-              %li
-                %a{:href => "pages/auth_register2.html"}
-                  %i.ti-more>
-                  Register 2
-              %li
-                %a{:href => "pages/auth_lockscreen.html"}
-                  %i.ti-more>
-                  Lockscreen
-              %li
-                %a{:href => "pages/auth_user_pass.html"}
-                  %i.ti-more>
-                  Recover password
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-receipt
-              %span Invoice
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/invoice.html"}
-                  %i.ti-more>
-                  Invoice
-              %li
-                %a{:href => "pages/invoicelist.html"}
-                  %i.ti-more>
-                  Invoice List
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-alert
-              %span Error Pages
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/error_400.html"}
-                  %i.ti-more>
-                  Error 400
-              %li
-                %a{:href => "pages/error_403.html"}
-                  %i.ti-more>
-                  Error 403
-              %li
-                %a{:href => "pages/error_404.html"}
-                  %i.ti-more>
-                  Error 404
-              %li
-                %a{:href => "pages/error_500.html"}
-                  %i.ti-more>
-                  Error 500
-              %li
-                %a{:href => "pages/error_503.html"}
-                  %i.ti-more>
-                  Error 503
-              %li
-                %a{:href => "pages/error_maintenance.html"}
-                  %i.ti-more>
-                  Maintenance
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-files
-              %span Sample Pages
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "pages/sample_blank.html"}
-                  %i.ti-more>
-                  Blank
-              %li
-                %a{:href => "pages/sample_coming_soon.html"}
-                  %i.ti-more>
-                  Coming Soon
-              %li
-                %a{:href => "pages/sample_custom_scroll.html"}
-                  %i.ti-more>
-                  Custom Scrolls
-              %li
-                %a{:href => "pages/sample_faq.html"}
-                  %i.ti-more>
-                  FAQ
-              %li
-                %a{:href => "pages/sample_gallery.html"}
-                  %i.ti-more>
-                  Gallery
-              %li
-                %a{:href => "pages/sample_lightbox.html"}
-                  %i.ti-more>
-                  Lightbox Popup
-              %li
-                %a{:href => "pages/sample_pricing.html"}
-                  %i.ti-more>
-                  Pricing
-          %li.header.nav-small-cap EXTRA
-          %li.treeview
-            %a{:href => "#"}
-              %i.ti-view-list
-              %span Multilevel
-              %span.pull-right-container
-                %i.fa.fa-angle-right.pull-right
-            %ul.treeview-menu
-              %li
-                %a{:href => "#"} Level One
-              %li.treeview
-                %a{:href => "#"}
-                  Level One
-                  %span.pull-right-container
-                    %i.fa.fa-angle-right.pull-right
-                %ul.treeview-menu
-                  %li
-                    %a{:href => "#"} Level Two
-                  %li.treeview
-                    %a{:href => "#"}
-                      Level Two
-                      %span.pull-right-container
-                        %i.fa.fa-angle-right.pull-right
-                    %ul.treeview-menu
-                      %li
-                        %a{:href => "#"} Level Three
-                      %li
-                        %a{:href => "#"} Level Three
-              %li
-                %a{:href => "#"} Level One
-          %li
-            %a{:href => "pages/auth_login.html"}
-              %i.ti-power-off
-              %span Log Out
+    =render partial: "admin/navigation/left_menu"
     / Content Wrapper. Contains page content
     .content-wrapper
       .container-full
@@ -1099,7 +376,7 @@
                   %p There are many of passages
               .news-slider.owl-carousel
                 .box
-                  %img.card-img-top.img-fluid.h-250{:alt => "Card image cap", :src => "../images/card/img1.jpg"}/
+                  %img.card-img-top.img-fluid.h-250{:alt => "Card image cap", :src => asset_path("default/card/img1.jpg")}/
                   .box-body
                     .text-center
                       %h4.box-title Blog title
@@ -1107,7 +384,7 @@
                       %a.btn.btn-rounded.btn-primary.btn-sm{:href => "#"} Read more
                   / /.box-body
                 .box
-                  %img.card-img-top.img-fluid.h-250{:alt => "Card image cap", :src => "../images/card/img2.jpg"}/
+                  %img.card-img-top.img-fluid.h-250{:alt => "Card image cap", :src => asset_path("default/card/img2.jpg")}/
                   .box-body
                     .text-center
                       %h4.box-title Blog title
@@ -1115,7 +392,7 @@
                       %a.btn.btn-rounded.btn-primary.btn-sm{:href => "#"} Read more
                   / /.box-body
                 .box
-                  %img.card-img-top.img-fluid.h-250{:alt => "Card image cap", :src => "../images/card/img3.jpg"}/
+                  %img.card-img-top.img-fluid.h-250{:alt => "Card image cap", :src => asset_path("default/card/img3.jpg")}/
                   .box-body
                     .text-center
                       %h4.box-title Blog title
@@ -1225,7 +502,7 @@
           .media-list.media-list-hover.mt-20
             .media.py-10.px-0
               %a.avatar.avatar-lg.status-success{:href => "#"}
-                %img{:alt => "...", :src => "../images/avatar/1.jpg"}/
+                %img{:alt => "...", :src => asset_path("default/avatar/1.jpg")}/
               .media-body
                 %p.font-size-16
                   %a.hover-primary{:href => "#"}
@@ -1234,7 +511,7 @@
                 %span Just now
             .media.py-10.px-0
               %a.avatar.avatar-lg.status-danger{:href => "#"}
-                %img{:alt => "...", :src => "../images/avatar/2.jpg"}/
+                %img{:alt => "...", :src => asset_path("default/avatar/2.jpg")}/
               .media-body
                 %p.font-size-16
                   %a.hover-primary{:href => "#"}
@@ -1243,7 +520,7 @@
                 %span 33 min ago
             .media.py-10.px-0
               %a.avatar.avatar-lg.status-warning{:href => "#"}
-                %img{:alt => "...", :src => "../images/avatar/3.jpg"}/
+                %img{:alt => "...", :src => asset_path("default/avatar/3.jpg")}/
               .media-body
                 %p.font-size-16
                   %a.hover-primary{:href => "#"}
@@ -1252,7 +529,7 @@
                 %span 42 min ago
             .media.py-10.px-0
               %a.avatar.avatar-lg.status-primary{:href => "#"}
-                %img{:alt => "...", :src => "../images/avatar/4.jpg"}/
+                %img{:alt => "...", :src => asset_path("default/avatar/4.jpg")}/
               .media-body
                 %p.font-size-16
                   %a.hover-primary{:href => "#"}
@@ -1261,7 +538,7 @@
                 %span 42 min ago
             .media.py-10.px-0
               %a.avatar.avatar-lg.status-success{:href => "#"}
-                %img{:alt => "...", :src => "../images/avatar/1.jpg"}/
+                %img{:alt => "...", :src => asset_path("default/avatar/1.jpg")}/
               .media-body
                 %p.font-size-16
                   %a.hover-primary{:href => "#"}
@@ -1270,7 +547,7 @@
                 %span Just now
             .media.py-10.px-0
               %a.avatar.avatar-lg.status-danger{:href => "#"}
-                %img{:alt => "...", :src => "../images/avatar/2.jpg"}/
+                %img{:alt => "...", :src => asset_path("default/avatar/2.jpg")}/
               .media-body
                 %p.font-size-16
                   %a.hover-primary{:href => "#"}
@@ -1279,7 +556,7 @@
                 %span 33 min ago
             .media.py-10.px-0
               %a.avatar.avatar-lg.status-warning{:href => "#"}
-                %img{:alt => "...", :src => "../images/avatar/3.jpg"}/
+                %img{:alt => "...", :src => asset_path("default/avatar/3.jpg")}/
               .media-body
                 %p.font-size-16
                   %a.hover-primary{:href => "#"}
@@ -1288,7 +565,7 @@
                 %span 42 min ago
             .media.py-10.px-0
               %a.avatar.avatar-lg.status-primary{:href => "#"}
-                %img{:alt => "...", :src => "../images/avatar/4.jpg"}/
+                %img{:alt => "...", :src => asset_path("default/avatar/4.jpg")}/
               .media-body
                 %p.font-size-16
                   %a.hover-primary{:href => "#"}

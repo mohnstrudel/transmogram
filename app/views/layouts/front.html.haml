@@ -4,9 +4,23 @@
     %title Transmogram - Your World of Warcraft Transmogrification Resource
     = csrf_meta_tags
     = csp_meta_tag
-
-    = stylesheet_link_tag    'front', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'front', 'data-turbolinks-track': 'reload'
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag    'front', media: 'all'
+    = javascript_include_tag 'front'
 
   %body
-    = yield
+    / .be-loader
+    /   .spinner
+    /     %img{:alt => "", :src => "img/logo-loader.png"}/
+    /     %p.circle
+    /       %span.ouro
+    /         %span.left
+    /           %span.anim
+    /         %span.right
+    /           %span.anim
+    %header
+      = render partial: "front/shared/header_upper_nav"
+    #content-block
+      = render partial: "front/shared/header_main_background" if (controller_name == "static_pages" && controller.action_name == "home")
+      = yield
+    =render partial: "front/shared/footer"

@@ -1,0 +1,21 @@
+-if current_user
+  -id = current_user.id
+-else
+  -id = User.last.id
+/ MAIN CONTENT
+.work-area
+  .col-xs-12.col-md-8.offset-md-2._editor-content_
+    =form_with model: Post.new do |f|
+      = f.hidden_field :user_id, value: id, class:'d-none'
+      .be-large-post.large-area
+        .info-block.style-2
+          .be-large-post-align
+            %h3.info-block-label Upload your file
+        .be-large-post-align
+          .upload-zone
+            %i.fa.center-i.fa-cloud-upload
+            = f.file_field :images, multiple: true
+        .info-block.be-large-post-align
+          =f.text_area :description, class: 'main-textarea', placeholder: "Insert your description there. Tags can be created using #-symbol. For example 'I love my #paladin #sunset set'"
+        .text-center
+          = f.submit 'Create Post', class: 'btn btn-primary'

@@ -1,0 +1,13 @@
+.head-bg
+  .head-bg-img
+  .head-bg-content
+    %h1 Transmogram
+    %p  Your Resource for WoW Transmogrification Fashion
+    / %a.btn.color-1.size-1.hover-1
+    /   %i.fa.fa-facebook>
+    /   sign up via facebook
+    -unless current_user
+      =link_to new_user_registration_path, class: "be-register btn color-3 size-1 hover-6" do
+        %i.fa.fa-lock>
+        sign up now
+/ %p.alert.alert-success="hello"

@@ -3,6 +3,13 @@ Rails.application.routes.draw do
 
   scope module: :front do
     root "static_pages#home"
+    scope module: :users do
+      devise_for :users
+    end
+    resources :posts
+    match :like, to: 'likes#create', as: :like, via: :post
+    match :unlike, to: 'likes#destroy', as: :unlike, via: :post
+    resources :comments, only: [:create, :destroy]
   end
 
   namespace :admin do

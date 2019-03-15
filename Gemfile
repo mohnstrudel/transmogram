@@ -35,7 +35,15 @@ gem 'jbuilder', '~> 2.5'
 
 
 # Custom gems
+gem 'acts_as_commentable'
+gem 'acts_as_votable'
+gem 'carrierwave'
+gem 'devise'
 gem 'haml-rails'
+gem 'impressionist'
+gem 'jquery-rails'
+# gem 'jquery-ui-rails'
+gem 'mini_magick'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

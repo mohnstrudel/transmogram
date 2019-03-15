@@ -1,0 +1,35 @@
+.be-comment-block
+  %h1.comments-title="Comments (#{object.comments.size})"
+  -unless user_signed_in?
+    %p.about-comment-block
+      You must
+      %a.be-signup-link{:href => "blog-detail-2.html"} SIGN UP
+      to join the conversation.
+  -object.comments.each do |comment|
+    .be-comment
+      .be-img-comment
+        %a{:href => "#"}
+          %img.be-ava-comment{:alt => "", :src => ''}/
+      .be-comment-content
+        %span.be-comment-name
+          %a{:href => '#'}=comment.user.nickname
+        %span.be-comment-time
+          %i.fa.fa-clock-o
+          ="#{comment.created_at.strftime('%d %M %Y at %H:%m')}"
+        %p.be-comment-text
+          =comment.comment
+  -if user_signed_in?
+    =form_with(url: comments_path, class: "form-block") do |f|
+      .row
+        .col-xs-12.col-sm-12
+          .form-group.fl_icon
+            .icon
+              %i.fa.fa-user
+            %input.form-input{:placeholder => "Your name", :type => "text", value: "blabb"}/
+            =f.hidden_field :user_id, value: current_user.id
+            =f.hidden_field :object, value: object.class.name
+            =f.hidden_field :object_id, value: object.id
+        .col-xs-12
+          .form-group
+            =f.text_area :comment, class: "form-input", required: "", placeholder: "Your comment"
+        =f.submit "submit", class: "btn color-1 size-2 hover-1 pull-right"

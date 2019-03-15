@@ -1,0 +1,6 @@
+%h1 Wow Transmogrification
+-unless current_user
+  =link_to 'log in', new_user_session_path
+
+%p Rendering Partial
+=render partial: "front/shared/new_post"

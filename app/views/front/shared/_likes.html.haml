@@ -1,0 +1,10 @@
+- if current_user.liked? likeable
+  = form_with(url: unlike_path(likeable_type: likeable.class.to_s, likeable_id: likeable.id)) do
+    = button_tag :submit, class: "btn btn-default", style: "position: absolute;" do
+      %i.fa.fa-thumbs-o-down
+    / = submit_tag class: 'fa fa-thumbs-o-down' do
+    /   unlike
+- else
+  = form_with(url: like_path(likeable_type: likeable.class.to_s, likeable_id: likeable.id)) do
+    = button_tag(type: "submit", class: "btn btn-default", style: "position: absolute;") do
+      %i.fa.fa-thumbs-o-up

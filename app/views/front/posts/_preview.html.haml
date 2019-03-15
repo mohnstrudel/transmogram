@@ -1,0 +1,21 @@
+.be-post
+  %a.be-img-block{:href => post_path(post)}
+    =image_tag post.images.first.url(:preview)
+  %a.be-post-title{:href => post_path(post)}=post.description_preview
+  %span
+    %a.be-post-tag{:href => "#"}=post.top_tags
+  .author-post
+    %img.ava-author{:alt => "", :src => asset_path("front_default/a1.png")}/
+    %span
+      by
+      %a{:href => "#"}=post.user.nickname
+  .info-block{id: "post-id-#{post.id}"}
+    %span
+      %i.fa.fa-thumbs-o-up
+      =post.votes_for.size
+    %span
+      %i.fa.fa-eye
+      =post.impressionist_count
+    %span
+      %i.fa.fa-comment-o
+      =post.comments.size

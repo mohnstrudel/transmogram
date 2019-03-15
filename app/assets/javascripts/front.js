@@ -10,7 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery-ui
 //= require rails-ujs
+
 //= require activestorage
-//= require turbolinks
-//= require_tree .
+
+
+//= require bootstrap/dist/js/bootstrap
+//= require front/idangerous.swiper.min
+//= require front/jquery.mixitup
+//= require front/jquery.viewportchecker.min
+//= require front/filters
+//= require front/global

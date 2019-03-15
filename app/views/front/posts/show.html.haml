@@ -1,0 +1,192 @@
+/ MAIN CONTENT
+#content-block
+  .container.custom-container.be-detail-container
+    .row
+      .col-md-9.col-md-push-3
+        .be-large-post
+          .info-block
+            .be-large-post-align
+              %span
+                %i.fa.fa-thumbs-o-up
+                =@post.votes_for.size
+              %span
+                %i.fa.fa-eye
+                =@post.impressionist_count
+              %span
+                %i.fa.fa-comment-o
+                =@post.comments.size
+          .blog-content.be-large-post-align
+            %h5.be-post-title.to=@post.description_preview
+            %span.be-text-tags
+              %a.be-post-tag{:href => '#'}=@post.top_tags
+            .clear
+            .post-text
+              .be-large-post-slider.type-wide
+                .swiper-container.thumbnails-preview{"data-autoplay" => "0", "data-center" => "0", "data-loop" => "1", "data-slides-per-view" => "1", "data-speed" => "500"}
+                  .swiper-wrapper
+                    -@post.images.each_with_index do |post_image, index|
+                      .swiper-slide{"data-val" => index}
+                        =image_tag post_image.url(:medium), class: 'img-responsive img-full'
+                        / .slider-text=@post.description
+                  .pagination.hidden
+                  .swiper-arrow-left.type-2
+                  .swiper-arrow-right.type-2
+                .swiper-container.thumbnails{"data-add-slides" => "5", "data-autoplay" => "0", "data-center" => "0", "data-lg-slides" => "5", "data-loop" => "0", "data-md-slides" => "5", "data-slides-per-view" => "responsive", "data-sm-slides" => "5", "data-speed" => "500", "data-xs-slides" => "3"}
+                  .swiper-wrapper
+                    -@post.images.each_with_index do |post_image, index|
+                      .swiper-slide{"data-val" => index, class: "#{'active current' if index == 0}"}
+                        =image_tag post_image.url(:thumb_mini)
+                  .pagination.hidden
+              %p=@post.description
+          .be-large-post-align
+            %h3.letf-menu-article
+              Tags
+            .tags_block.clearfix
+              %ul
+                -@post.hash_tags.each do |tag|
+                  %li
+                    %a{:href => "#"}=tag.name
+        .row
+          -@similar_posts.each do |post|
+            .col-md-4
+              =render partial: "front/posts/preview", locals: { post: post }
+
+        #commentary
+          =render partial: "front/shared/comments", locals: { object: @post }
+
+      .col-md-3.col-md-pull-9.left-feild
+        .be-user-block
+          .be-user-detail
+            %a.be-ava-user{:href => "blog-detail-2.html"}
+              %img{:alt => "", :src => "img/ava.png"}/
+            %p.be-use-name Daniel Ng
+            %span.be-user-info
+              Singapore, Singapore
+          .be-user-activity-block
+            .row
+              .col-lg-6
+                %a.be-user-activity-button.be-follow-type{:href => "blog-detail-2.html"}
+                  %i.fa.fa-plus>
+                  FOLLOW
+              .col-lg-6
+                %a.col-lg-6.be-user-activity-button.send-btn.be-message-type{:href => "blog-detail-2.html"}
+                  %i.fa.fa-envelope-o>
+                  MESSAGE
+          %h5.be-title
+            About Project
+          %p.be-text-userblock
+            Fusce dolor libero, efficitur et lobortis at, faucibus nec nunc. Proin fermentum turpis eget nisi facilisis lobortis. Praesent malesuada facilisis maximus. Donec sed lobortis tortor. Ut nec lacinia sapien, sit amet dapibus magna.
+        %a.be-button-vidget.like-btn.blue-style{:href => "blog-detail-2.html"}
+          %i.fa.fa-thumbs-o-up>
+          LIKE PROJECT
+        %a.be-button-vidget.add-btn.grey-style{:href => "blog-detail-2.html"}
+          %i.fa.fa-file-o>
+          ADD TO COLLECTION
+        %h3.letf-menu-article.text-center Recent Works
+        .swiper-container{"data-center" => "0", "data-loop" => "1", "data-slides-per-view" => "1", "data-speed" => "500"}
+          .swiper-wrapper
+            .swiper-slide
+              .be-post
+                %a.be-img-block{:href => "blog-detail-2.html"}
+                  %img{:alt => "omg", :height => "202", :src => "img/p9.jpg", :width => "269"}/
+                %a.be-post-title{:href => "blog-detail-2.html"} NAHA Finalist Hairstylist of the Year Allen Ruiz
+                %span
+                  %a.be-post-tag{:href => "blog-detail-2.html"}> Art direction
+                  ,
+                  = succeed "," do
+                    %a.be-post-tag{:href => "blog-detail-2.html"} Web Design
+                  %a.be-post-tag{:href => "blog-detail-2.html"} Interactiob design
+                .author-post
+                  %img.ava-author{:alt => "", :src => "img/ava.png"}/
+                  %span
+                    by
+                    %a{:href => "blog-detail-2.html"} Daniel Ng
+                .info-block
+                  %span
+                    %i.fa.fa-thumbs-o-up
+                    253
+                  %span
+                    %i.fa.fa-eye
+                    753
+                  %span
+                    %i.fa.fa-comment-o
+                    50
+            .swiper-slide
+              .be-post
+                %a.be-img-block{:href => "blog-detail-2.html"}
+                  %img{:alt => "omg", :height => "202", :src => "img/p9.jpg", :width => "269"}/
+                %a.be-post-title{:href => "blog-detail-2.html"} NAHA Finalist Hairstylist of the Year Allen Ruiz
+                %span
+                  %a.be-post-tag{:href => "blog-detail-2.html"}> Art direction
+                  ,
+                  = succeed "," do
+                    %a.be-post-tag{:href => "blog-detail-2.html"} Web Design
+                  %a.be-post-tag{:href => "blog-detail-2.html"} Interactiob design
+                .author-post
+                  %img.ava-author{:alt => "", :src => "img/ava.png"}/
+                  %span
+                    by
+                    %a{:href => "blog-detail-2.html"} Daniel Ng
+                .info-block
+                  %span
+                    %i.fa.fa-thumbs-o-up
+                    253
+                  %span
+                    %i.fa.fa-eye
+                    753
+                  %span
+                    %i.fa.fa-comment-o
+                    50
+            .swiper-slide
+              .be-post
+                %a.be-img-block{:href => "blog-detail-2.html"}
+                  %img{:alt => "omg", :height => "202", :src => "img/p9.jpg", :width => "269"}/
+                %a.be-post-title{:href => "blog-detail-2.html"} NAHA Finalist Hairstylist of the Year Allen Ruiz
+                %span
+                  %a.be-post-tag{:href => "blog-detail-2.html"}> Art direction
+                  ,
+                  = succeed "," do
+                    %a.be-post-tag{:href => "blog-detail-2.html"} Web Design
+                  %a.be-post-tag{:href => "blog-detail-2.html"} Interactiob design
+                .author-post
+                  %img.ava-author{:alt => "", :src => "img/ava.png"}/
+                  %span
+                    by
+                    %a{:href => "blog-detail-2.html"} Daniel Ng
+                .info-block
+                  %span
+                    %i.fa.fa-thumbs-o-up
+                    253
+                  %span
+                    %i.fa.fa-eye
+                    753
+                  %span
+                    %i.fa.fa-comment-o
+                    50
+            .swiper-slide
+              .be-post
+                %a.be-img-block{:href => "blog-detail-2.html"}
+                  %img{:alt => "omg", :height => "202", :src => "img/p9.jpg", :width => "269"}/
+                %a.be-post-title{:href => "blog-detail-2.html"} NAHA Finalist Hairstylist of the Year Allen Ruiz
+                %span
+                  %a.be-post-tag{:href => "blog-detail-2.html"}> Art direction
+                  ,
+                  = succeed "," do
+                    %a.be-post-tag{:href => "blog-detail-2.html"} Web Design
+                  %a.be-post-tag{:href => "blog-detail-2.html"} Interactiob design
+                .author-post
+                  %img.ava-author{:alt => "", :src => "img/ava.png"}/
+                  %span
+                    by
+                    %a{:href => "blog-detail-2.html"} Daniel Ng
+                .info-block
+                  %span
+                    %i.fa.fa-thumbs-o-up
+                    253
+                  %span
+                    %i.fa.fa-eye
+                    753
+                  %span
+                    %i.fa.fa-comment-o
+                    50
+          .pagination

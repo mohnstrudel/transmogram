@@ -1,0 +1,2 @@
+console.log("destroyed!");
+$('#post-id-<%= params[:likeable_id] %>').html("<span><%= j render(:partial => 'front/shared/likes', locals: { likeable: params[:likeable_type].constantize.find(params[:likeable_id])}) %></span>");

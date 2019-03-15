@@ -1,0 +1,1 @@
+$('#commentary').html("<%= escape_javascript render(:partial => 'front/shared/comments', :locals => { :object => @comment.commentable_type.constantize.find(@comment.commentable_id) }) %>");
