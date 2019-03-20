@@ -42,7 +42,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'impressionist'
 gem 'jquery-rails'
-# gem 'jquery-ui-rails'
+gem 'jquery-ui-rails'
 gem 'mini_magick'
 
 # Reduces boot times through caching; required in config/boot.rb

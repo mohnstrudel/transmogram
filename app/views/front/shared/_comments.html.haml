@@ -25,7 +25,7 @@
           .form-group.fl_icon
             .icon
               %i.fa.fa-user
-            %input.form-input{:placeholder => "Your name", :type => "text", value: "blabb"}/
+            %input.form-input{:placeholder => "Your name", :type => "text", value: current_user.nickname}/
             =f.hidden_field :user_id, value: current_user.id
             =f.hidden_field :object, value: object.class.name
             =f.hidden_field :object_id, value: object.id

@@ -1,11 +1,12 @@
 class Front::PostsController < FrontController
   impressionist :actions=>[:show]
-  before_action :find_post, only: [:show, :upvote, :downvote]
+  before_action :find_post, only: [:upvote, :downvote]
 
   def new
   end
 
   def show
+    @post = Post.includes(:comments).find(params[:id])
     @similar_posts = Post.last(3)
   end
 
