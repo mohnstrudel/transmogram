@@ -2,9 +2,9 @@
   =form_with(url: unlike_path(likeable_type: likeable.class.to_s, likeable_id: likeable.id), method: :post, class: "be-button-vidget blue-style") do |f|
     =button_tag style: "display: contents;" do
       %i.fa.fa-thumbs-o-up>
-      UNLIKE POST
+      UNLIKE
 -else
   =form_with(url: like_path(likeable_type: likeable.class.to_s, likeable_id: likeable.id), class: "be-button-vidget blue-style") do |f|
     =button_tag style: "display: contents;" do
       %i.fa.fa-thumbs-o-up>
-      LIKE POST
+      LIKE THIS POST

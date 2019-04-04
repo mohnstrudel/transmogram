@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     match :like, to: 'likes#create', as: :like, via: :post
     match :unlike, to: 'likes#destroy', as: :unlike, via: :post
     resources :comments, only: [:create, :destroy]
+    resources :users, only: [:show]
   end
 
   namespace :admin do
