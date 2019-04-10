@@ -44,6 +44,12 @@ gem 'impressionist'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'mini_magick'
+gem 'dotenv'
+gem 'aws-sdk'
+gem "figaro"
+gem "fog-aws"
+gem 'fog'
+gem 'newrelic_rpm'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

@@ -1,0 +1,7 @@
+/ =byebug
+-if posts.present?
+  -posts.each do |post|
+    =render partial: "front/posts/preview", locals: { post: post }
+
+-else
+  %h4="No posts found for '#{params[:query]}'. Please try a new search."

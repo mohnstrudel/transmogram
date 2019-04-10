@@ -1,5 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user
+  belongs_to :armor_type
+  belongs_to :class_type
+
   acts_as_commentable
   acts_as_votable
 
@@ -11,6 +14,8 @@ class Post < ApplicationRecord
   has_many :hash_tags, through: :post_hash_tags
 
   after_commit :create_hash_tags, on: :create
+
+  validates :title, presence: true
 
   def create_hash_tags
     extract_name_hash_tags.each do |name|

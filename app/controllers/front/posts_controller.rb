@@ -3,6 +3,10 @@ class Front::PostsController < FrontController
   before_action :find_post, only: [:upvote, :downvote]
 
   def new
+    unless current_user
+      redirect_to root_path
+      flash[:alarm] = "You must be logged in to create a new post. #{link_to 'Sign Up', new_user_registration_path} or #{link_to 'Log In', new_user_session_path}"
+    end
   end
 
   def show
@@ -11,11 +15,19 @@ class Front::PostsController < FrontController
   end
 
   def create
+    @post = Post.new(post_params)
     begin
-      Post.create!(post_params)
-      redirect_to root_path
+      if @post.save
+        redirect_to root_path
+        flash[:success] = "Your post was successfully uploaded"
+      else
+        flash[:alarm] = "Errors encountered: #{@post.errors.full_messages.join('; ')}"
+        render :new
+      end
     rescue => e
-      puts "Error: #{e.inspect}"
+      puts "Posts controller ´create´ action. Error: #{e.inspect}"
+      flash.now[:alarm] = "Errors encountered: #{e.full_messages}"
+      render :new
     end
   end
 
@@ -36,6 +48,6 @@ class Front::PostsController < FrontController
   end
 
   def post_params
-    params.require(:post).permit(:description, :user_id, {images: []})
+    params.require(:post).permit(:description, :user_id, { images: [] }, :title, :armor_type_id, :class_type_id)
   end
 end

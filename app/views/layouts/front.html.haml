@@ -7,6 +7,7 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = stylesheet_link_tag    'front', media: 'all'
     = javascript_include_tag 'front'
+    = favicon_link_tag asset_path('front_default/favicon.png')
 
   %body
     / .be-loader
@@ -22,5 +23,7 @@
       = render partial: "front/shared/header_upper_nav"
     #content-block
       = render partial: "front/shared/header_main_background" if (controller_name == "static_pages" && controller.action_name == "home")
+      - flash.each do |key, value|
+        .alert{class: "alert-#{key}"}=value
       = yield
     =render partial: "front/shared/footer"

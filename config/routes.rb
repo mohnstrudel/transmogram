@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   scope module: :front do
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
     match :unlike, to: 'likes#destroy', as: :unlike, via: :post
     resources :comments, only: [:create, :destroy]
     resources :users, only: [:show]
+
+    get 'search' => 'search#index'
   end
 
   namespace :admin do

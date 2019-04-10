@@ -16,7 +16,7 @@
                 %i.fa.fa-comment-o
                 =@post.comments.size
           .blog-content.be-large-post-align
-            %h5.be-post-title.to=@post.description_preview
+            %h5.be-post-title.to=@post.title
             %span.be-text-tags
               %a.be-post-tag{:href => '#'}=@post.top_tags
             .clear
@@ -48,8 +48,7 @@
                     %a{:href => "#"}=tag.name
         .row
           -@similar_posts.each do |post|
-            .col-md-4
-              =render partial: "front/posts/preview", locals: { post: post }
+            =render partial: "front/posts/preview", locals: { post: post }
 
         #commentary
           =render partial: "front/shared/comments", locals: { object: @post }
@@ -58,7 +57,7 @@
         .be-user-block
           .be-user-detail
             %a.be-ava-user{:href => ""}
-              / %img{:alt => "", :src => current_user.avatar.url(:preview)}
+              %img{:alt => "", :src => current_user.avatar.url(:thumb), style: "border-radius: 50%;"}
             %p.be-use-name=current_user.nickname
             / %span.be-user-info
             /   Singapore, Singapore

@@ -2,10 +2,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  include Amazon
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -22,13 +23,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process scale: [200, 300]
+  # process :check_if_allowed
+
   #
   # def scale(width, height)
   #   # do something
   # end
 
   # Create different versions of your uploaded files:
+  version :original do
+    after :store, :check_if_allowed
+  end
+
   version :preview do
     process resize_to_fill: [269, 202]
   end
@@ -45,6 +51,23 @@ class ImageUploader < CarrierWave::Uploader::Base
   # For images you might use something like this:
   def extension_whitelist
     %w(jpg jpeg gif png)
+  end
+
+  protected
+
+  def check_if_allowed myparam
+    allowed = Amazon::ProcessImage.new.return_labels(self.file.path)
+
+    return if allowed
+    # Delete image
+    begin
+      self.model.remove_images!
+      # flash[:alert] = "Your uploaded files contain not allowed image content. Please upload world of warcraft content."
+    rescue => e
+      amazon_logger ||= Logger.new("#{Rails.root}/log/amazon_logger.log")
+      amazon_logger.debug("While removing images from Carrierwave uploader something went wrong: #{e.message}.")
+      # flash[:alert] = "Something went wrong during image upload. Our engineers were notified."
+    end
   end
 
   # Override the filename of the uploaded files:
