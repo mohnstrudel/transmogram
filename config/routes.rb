@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
   get 'search/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
     resources :users, only: [:show]
 
     get 'search' => 'search#index'
+    get :help, to: 'static_pages#help'
+    get :contact, to: 'static_pages#contact'
   end
 
   namespace :admin do

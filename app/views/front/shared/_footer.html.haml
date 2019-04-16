@@ -3,78 +3,11 @@
   .footer_slider
     .swiper-container{"data-add-slides" => "19", "data-autoplay" => "0", "data-center" => "0", "data-lg-slides" => "19", "data-loop" => "1", "data-md-slides" => "14", "data-slides-per-view" => "responsive", "data-sm-slides" => "8", "data-speed" => "500", "data-xs-slides" => "4"}
       .swiper-wrapper
-        .swiper-slide.active{"data-val" => "0"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f1.jpg")}/
-        .swiper-slide{"data-val" => "1"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f2.jpg")}/
-        .swiper-slide{"data-val" => "2"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f3.jpg")}/
-        .swiper-slide{"data-val" => "3"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f4.jpg")}/
-        .swiper-slide{"data-val" => "4"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f5.jpg")}/
-        .swiper-slide{"data-val" => "5"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f6.jpg")}/
-        .swiper-slide{"data-val" => "6"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f7.jpg")}/
-        .swiper-slide{"data-val" => "7"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f8.jpg")}/
-        .swiper-slide{"data-val" => "8"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f9.jpg")}/
-        .swiper-slide{"data-val" => "9"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f10.jpg")}/
-        .swiper-slide{"data-val" => "10"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f11.jpg")}/
-        .swiper-slide{"data-val" => "11"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f12.jpg")}/
-        .swiper-slide{"data-val" => "12"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f13.jpg")}/
-        .swiper-slide{"data-val" => "13"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f14.jpg")}/
-        .swiper-slide{"data-val" => "14"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f15.jpg")}/
-        .swiper-slide{"data-val" => "15"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f16.jpg")}/
-        .swiper-slide{"data-val" => "16"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f17.jpg")}/
-        .swiper-slide{"data-val" => "17"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f18.jpg")}/
-        .swiper-slide{"data-val" => "18"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f19.jpg")}/
-        .swiper-slide{"data-val" => "19"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f1.jpg")}/
-        .swiper-slide{"data-val" => "20"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f2.jpg")}/
-        .swiper-slide{"data-val" => "21"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f3.jpg")}/
-        .swiper-slide{"data-val" => "22"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f4.jpg")}/
-        .swiper-slide{"data-val" => "23"}
-          %a{:href => "gallery.html"}
-            %img.img-responsive.img-full{:alt => "", :src => asset_path("front_default/f5.jpg")}/
+        -@footer_posts.each_with_index do |post, index|
+          .swiper-slide{"data-val" => index, class: "#{'active' if index == 0}"}
+            %a{:href => post_path(post)}
+              %img.img-responsive.img-full{:alt => "", :src => asset_path(post.images.first.quadratic_small.url)}
+
       .pagination.hidden
   .footer-main
     .container-fluid.custom-container
@@ -83,29 +16,19 @@
           .footer-block
             %h1.footer-title About Us
             %p
-              Vestibulum tincidunt, augue fermentum accumsan viverra, eros dui rutrum libero, nec imperdiet felis sem in augue luctus
-              %a{:href => "blog-detail-2.html"} diam a porta
-              iaculis. Vivamus sit amet fermentum nisl. Duis id
-              %a{:href => "blog-detail-2.html"} massa id purus
-              tristique varius a sit amet est. Fusce dolor libero, efficitur et lobortis at, faucibus nec nunc.
+              Transmogram is a resource, created by passionate WoW fashionists. We would love to give you the opportunity to share the most fabulous character outfits with the world. Let the community decide how awesome your transmog set ist! You can contact the author using one of the links below:
             %ul.soc_buttons
               %li
-                %a{:href => ""}
+                %a{:href => "https://www.facebook.com/anton.kostin.5"}
                   %i.fa.fa-facebook
               %li
-                %a{:href => ""}
+                %a{:href => "https://twitter.com/MohnstrudelLove"}
                   %i.fa.fa-twitter
               %li
-                %a{:href => ""}
-                  %i.fa.fa-google-plus
-              %li
-                %a{:href => ""}
-                  %i.fa.fa-pinterest-p
-              %li
-                %a{:href => ""}
+                %a{:href => "https://www.instagram.com/mohnstrudellove/"}
                   %i.fa.fa-instagram
               %li
-                %a{:href => ""}
+                %a{:href => "https://www.linkedin.com/in/anton-kostin-5ba0959a/"}
                   %i.fa.fa-linkedin
         .col-md-3.col-xl-2
           .footer-block
@@ -113,60 +36,40 @@
             .row.footer-list-footer
               .col-md-6
                 %ul.link-list
+                  / %li
+                  /   %a{:href => "about-us.html"} About Us
                   %li
-                    %a{:href => "about-us.html"} About Us
+                    %a{:href => help_path} Help
                   %li
-                    %a{:href => "contact-us.html"} Help
-                  %li
-                    %a{:href => "contact-us.html"} Contacts
-                  %li
-                    %a{:href => "activity.html"} Job
-                  %li
-                    %a{:href => "activity.html"} Projets
+                    %a{:href => contact_path} Contacts
+                  / %li
+                  /   %a{:href => "activity.html"} Job
+                  / %li
+                  /   %a{:href => "activity.html"} Projets
               .col-md-6
                 %ul.link-list
+                  / %li
+                  /   %a{:href => "activity.html"} New Works
+                  / %li
+                  /   %a{:href => "author.html"} Popular Authors
+                  / %li
+                  /   %a{:href => "author.html"} New Authors
+                  / %li
+                  /   %a{:href => "people.html"} Career
                   %li
-                    %a{:href => "activity.html"} New Works
-                  %li
-                    %a{:href => "author.html"} Popular Authors
-                  %li
-                    %a{:href => "author.html"} New Authors
-                  %li
-                    %a{:href => "people.html"} Career
-                  %li
-                    %a{:href => "faq"} FAQ
+                    %a{:href => "#"} FAQ
         .col-md-3.galerry
           .footer-block
             %h1.footer-title Recent Works
-            %a{:href => "blog-detail-2.html"}
-              %img{:alt => "", :src => asset_path("front_default/g1.jpg")}/
-            %a{:href => "blog-detail-2.html"}
-              %img{:alt => "", :src => asset_path("front_default/g2.jpg")}/
-            %a{:href => "blog-detail-2.html"}
-              %img{:alt => "", :src => asset_path("front_default/g3.jpg")}/
-            %a{:href => "blog-detail-2.html"}
-              %img{:alt => "", :src => asset_path("front_default/g4.jpg")}/
-            %a{:href => "blog-detail-2.html"}
-              %img{:alt => "", :src => asset_path("front_default/g5.jpg")}/
-            %a{:href => "blog-detail-2.html"}
-              %img{:alt => "", :src => asset_path("front_default/g6.jpg")}/
-            %a{:href => "blog-detail-2.html"}
-              %img{:alt => "", :src => asset_path("front_default/g7.jpg")}/
-            %a{:href => "blog-detail-2.html"}
-              %img{:alt => "", :src => asset_path("front_default/g8.jpg")}/
-            %a{:href => "blog-detail-2.html"}
-              %img{:alt => "", :src => asset_path("front_default/g9.jpg")}/
-            %a{:href => "blog-detail-2.html"}
-              %img{:alt => "", :src => asset_path("front_default/g10.jpg")}/
-            %a{:href => "blog-detail-2.html"}
-              %img{:alt => "", :src => asset_path("front_default/g11.jpg")}/
-            %a{:href => "blog-detail-2.html"}
-              %img{:alt => "", :src => asset_path("front_default/g12.jpg")}/
+            -@footer_posts.each do |post|
+              %a{:href => post_path(post)}
+                %img{:alt => "", :src => asset_path(post.images.first.quadratic_small.url)}/
+
         .col-md-3
           .footer-block
             %h1.footer-title Subscribe On Our News
             %form.subscribe-form{:action => "./"}
-              %input{:placeholder => "Yout Name", :required => "", :type => "text"}/
+              %input{:placeholder => "Not implemented yet :)", :required => "", :type => "text"}/
               .submit-block
                 %i.fa.fa-envelope-o
                 %input{:type => "submit", :value => ""}/
@@ -175,22 +78,19 @@
                 %i.fa.fa-twitter
               .message-soc
                 .date 16h ago
-                %a.account{:href => "blog-detail-2.html"} @faq
-                vestibulum accumsan est
-                %a.heshtag{:href => "blog-detail-2.html"} blog-detail-2.htmlmalesuada
-                sem auctor, eu aliquet nisi ornare leo sit amet varius egestas.
+                This is a fake Twitter implementation. It will be replaced with a real one soon.
   .footer-bottom
     .container-fluid.custom-container
       .col-md-12.footer-end.clearfix
         .left
           %span.copy
-            © 2015. All rights reserved.
+            © 2019. All rights reserved.
             %span.white
-              %a{:href => "blog-detail-2.html"} NRGNetwork
+              %a{:href => "https://blog.handsomecake.com"} HandsomecakeStudios
           %span.created
             Created with LOVE by
             %span.white
-              %a{:href => "blog-detail-2.html"} NRGThemes
+              %a{:href => "https://twitter.com/MohnstrudelLove"} Mohnstrudel
         .right
           %a.btn.color-7.size-2.hover-9 About Us
           %a.btn.color-7.size-2.hover-9 Help

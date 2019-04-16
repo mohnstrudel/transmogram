@@ -97,4 +97,6 @@
               %a.filter{"data-filter" => ".category-3"} branding
     .col-md-10
       #container-mix.row._post-container_
-        =render partial: "front/posts/posts", locals: { posts: @posts}
+        -cache @posts do
+          =render partial: "front/posts/posts", locals: { posts: @posts}
+

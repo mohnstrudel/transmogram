@@ -1,4 +1,5 @@
 class Front::PostsController < FrontController
+  include ActionView::Helpers::UrlHelper
   impressionist :actions=>[:show]
   before_action :find_post, only: [:upvote, :downvote]
 
@@ -15,11 +16,13 @@ class Front::PostsController < FrontController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.build(post_params)
     begin
-      if @post.save
+      if @post.valid?
+        # proceed with background job and save the post
+        UploadWorker.perform_async(@post.id)
+        flash.now[:success] = "Your post upload request was created. If your images do contain WoW characters, everything will be okay and your post should appear within a minute on the main page."
         redirect_to root_path
-        flash[:success] = "Your post was successfully uploaded"
       else
         flash[:alarm] = "Errors encountered: #{@post.errors.full_messages.join('; ')}"
         render :new
