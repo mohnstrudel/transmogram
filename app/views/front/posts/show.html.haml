@@ -26,7 +26,7 @@
                   .swiper-wrapper
                     -@post.images.each_with_index do |post_image, index|
                       .swiper-slide{"data-val" => index}
-                        =image_tag post_image.url(:medium), class: 'img-responsive img-full'
+                        =image_tag post_image.image_value_url, class: 'img-responsive img-full'
                         / .slider-text=@post.description
                   .pagination.hidden
                   .swiper-arrow-left.type-2
@@ -35,7 +35,7 @@
                   .swiper-wrapper
                     -@post.images.each_with_index do |post_image, index|
                       .swiper-slide{"data-val" => index, class: "#{'active current' if index == 0}"}
-                        =image_tag post_image.url(:thumb_mini)
+                        =image_tag post_image.image_value_url
                   .pagination.hidden
               %p=@post.description
           .be-large-post-align
@@ -57,7 +57,7 @@
         .be-user-block
           .be-user-detail
             %a.be-ava-user{:href => ""}
-              %img{:alt => "", :src => current_user.avatar.url(:thumb), style: "border-radius: 50%;"}
+              / %img{:alt => "", :src => current_user.avatar.url(:thumb), style: "border-radius: 50%;"}
             %p.be-use-name=current_user.nickname
             / %span.be-user-info
             /   Singapore, Singapore
@@ -87,7 +87,7 @@
               .swiper-slide
                 .be-post
                   %a.be-img-block{:href => post_path(last_post)}
-                    %img{:alt => "omg", :src => last_post.images.first.url(:preview)}
+                    =dig_images(object: last_post)
                   %a.be-post-title{:href => post_path(last_post)}=last_post.description_preview
                   %span
                     -last_post.hash_tags.each do |hash_tag|

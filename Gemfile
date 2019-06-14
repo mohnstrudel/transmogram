@@ -37,22 +37,23 @@ gem 'jbuilder', '~> 2.5'
 # Custom gems
 gem 'acts_as_commentable'
 gem 'acts_as_votable'
-gem 'carrierwave'
+gem 'aws-sdk'
 gem 'devise'
+gem 'dotenv'
+gem "figaro"
+gem "fog-aws"
 gem 'haml-rails'
+gem 'image_processing'
 gem 'impressionist'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'mini_magick'
-gem 'dotenv'
-gem 'aws-sdk'
-gem "figaro"
-gem "fog-aws"
-gem 'fog'
-# gem 'newrelic_rpm'
 gem 'pagy'
 gem 'redis-rails'
+gem "shrine"
 gem 'sidekiq'
+gem 'xray-rails'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

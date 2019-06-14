@@ -10,7 +10,7 @@
       .for-be-dropdowns
         .be-drop-down
           %i.icon-projects
-          %span.be-dropdown-content Projects
+          %span.be-dropdown-content Armor Type
           %ul.drop-down-list
             %li.filter{"data-filter" => ".category-1"}
               %a{"data-type" => "category-1"} Projects
@@ -20,8 +20,7 @@
               %a{"data-type" => "category-3"} People
         .be-drop-down
           %i.icon-creative
-          %span.be-dropdown-content
-            All Creative Filds
+          %span.be-dropdown-content Character Class
           %ul.drop-down-list
             %li.filter{"data-filter" => ".category-4"}
               %a Item - 1
@@ -29,72 +28,24 @@
               %a Item - 2
             %li.filter{"data-filter" => ".category-1"}
               %a Item - 3
-        .be-drop-down
-          %i.icon-features
-          %span.be-dropdown-content
-            Features
-          %ul.drop-down-list
-            %li.filter{"data-filter" => ".category-2"}
-              %a Featured
-            %li.filter{"data-filter" => ".category-3"}
-              %a Most Appreciated
-            %li.filter{"data-filter" => ".category-4"}
-              %a Most Viewed
-            %li.filter{"data-filter" => ".category-5"}
-              %a Most Discussed
-            %li.filter{"data-filter" => ".category-1"}
-              %a Most Recent
-        .be-drop-down
-          %i.icon-worldwide
-          %span.be-dropdown-content
-            Worldwide
-          %ul.drop-down-list
-            %li.filter{"data-filter" => ".category-2"}
-              %a WorldWide
-            %li.filter{"data-filter" => ".category-3"}
-              %a United States
-            %li.filter{"data-filter" => ".category-4"}
-              %a Germany
-            %li.filter{"data-filter" => ".category-5"}
-              %a United Kingdom
 .container-fluid.custom-container
   .row
     .col-md-2.left-feild
-      .be-vidget
-        %h3.letf-menu-article
-          Popular Creative Filds
-        .creative_filds_block
-          .ul
-            %a.filter{"data-filter" => ".category-1"} Graphic Design
-            %a.filter{"data-filter" => ".category-2"} Photography
-            %a.filter{"data-filter" => ".category-3"} Interaction Design
-            %a.filter{"data-filter" => ".category-4"} Art Direction
-            %a.filter{"data-filter" => ".category-5"} Illustration
+      / .be-vidget
+      /   %h3.letf-menu-article
+      /     Popular Creative Filds
+      /   .creative_filds_block
+      /     .ul
+      /       %a.filter{"data-filter" => ".category-1"} Graphic Design
+      /       %a.filter{"data-filter" => ".category-2"} Photography
+      /       %a.filter{"data-filter" => ".category-3"} Interaction Design
+      /       %a.filter{"data-filter" => ".category-4"} Art Direction
+      /       %a.filter{"data-filter" => ".category-5"} Illustration
       .be-vidget
         %h3.letf-menu-article
           Popular Tags
         .tags_block.clearfix
-          %ul
-            %li
-              %a.filter{"data-filter" => ".category-6"} photoshop
-            %li
-              %a.filter{"data-filter" => ".category-1"} graphic
-            %li
-              %a.filter{"data-filter" => ".category-2"} art
-            %li
-              %a.filter{"data-filter" => ".category-3"} website
-            %li
-              %a.filter{"data-filter" => ".category-4"} logo
-            %li
-              %a.filter{"data-filter" => ".category-5"} identity
-            %li
-              %a.filter{"data-filter" => ".category-6"} logo design
-            %li
-              %a.filter{"data-filter" => ".category-1"} interactive
-            %li
-              %a.filter{"data-filter" => ".category-2"} blue
-            %li
-              %a.filter{"data-filter" => ".category-3"} branding
+          =render partial: 'front/shared/popular_tags'
     .col-md-10
       #container-mix.row._post-container_
         -cache @posts do

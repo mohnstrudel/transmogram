@@ -24,6 +24,13 @@
     #content-block
       = render partial: "front/shared/header_main_background" if (controller_name == "static_pages" && controller.action_name == "home")
       - flash.each do |key, value|
-        .alert{class: "alert-#{key}"}=value.html_safe
+        .alert{class: "alert-#{key}"}
+          -if value.is_a?(Array)
+            =value.shift
+            %ul
+              -value.reduce.each do |error_message|
+                %li=error_message
+          -else
+            =value
       = yield
     =render partial: "front/shared/footer"

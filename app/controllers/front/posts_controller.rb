@@ -16,20 +16,37 @@ class Front::PostsController < FrontController
   end
 
   def create
-    @post = Post.build(post_params)
+    if params[:files].present?
+      # transform the list of uploaded files into a photos attributes hash
+      new_images_attributes = params[:files].inject({}) do |hash, file|
+        hash.merge!(SecureRandom.hex => { image_value: file })
+      end
+      # merge new images attributes with existing (`post_params` is whitelisted `params[:post]`)
+      images_attributes = post_params[:images_attributes].to_h.merge(new_images_attributes)
+      post_attributes  = post_params.merge(images_attributes: images_attributes)
+
+      # create the post with images
+      @post = Post.new(post_attributes)
+    else
+      @post = Post.new(post_params)
+    end
+
     begin
-      if @post.valid?
-        # proceed with background job and save the post
-        UploadWorker.perform_async(@post.id)
-        flash.now[:success] = "Your post upload request was created. If your images do contain WoW characters, everything will be okay and your post should appear within a minute on the main page."
+      if @post.save
+        flash[:success] = "Your post upload request was created. If your images do contain WoW characters, everything will be okay and your post should appear within a minute on the main page."
         redirect_to root_path
+        # if params[:images].present?
+        #   params[:images].each { |image| @post.images.create(image_value: image, validate: true) }
       else
-        flash[:alarm] = "Errors encountered: #{@post.errors.full_messages.join('; ')}"
+        # @post.errors[:base] << "You must attach at least one image"
+        flash[:alarm] = ["Errors encountered:", @post.errors.full_messages]
+        # flash[:alarm] = "Errors encountered: #{@post.errors.full_messages.join("\n")}"
+        # @post.destroy
         render :new
       end
     rescue => e
       puts "Posts controller ´create´ action. Error: #{e.inspect}"
-      flash.now[:alarm] = "Errors encountered: #{e.full_messages}"
+      flash[:alarm] = "Errors encountered: #{e.full_messages}"
       render :new
     end
   end
@@ -51,6 +68,7 @@ class Front::PostsController < FrontController
   end
 
   def post_params
-    params.require(:post).permit(:description, :user_id, { images: [] }, :title, :armor_type_id, :class_type_id)
+    params.require(:post).permit(:description, :user_id, :title, :armor_type_id, :class_type_id,
+      images_attributes: [:id, :image_value, :_destroy, :post_id])
   end
 end

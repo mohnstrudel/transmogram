@@ -1,9 +1,9 @@
 class UploadWorker
   include Sidekiq::Worker
+  # sidekiq_options queue: 'carrierwave'
+  # sidekiq_options retry: false
 
   def perform(post_id)
-    # Do something
-    post = Post.find(post_id)
-    post.save
+    puts "Upload worker performed, did nothing"
   end
 end

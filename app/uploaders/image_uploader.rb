@@ -1,86 +1,35 @@
-class ImageUploader < CarrierWave::Uploader::Base
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
-  include Amazon
+require "image_processing/mini_magick"
 
-  # Choose what kind of storage to use for this uploader:
-  # storage :file
-  storage :fog
+class ImageUploader < Shrine
+  #plugins and uploading logic
 
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  plugin :processing # allows hooking into promoting
+  plugin :versions   # enable Shrine to handle a hash of files
+  plugin :delete_raw # delete processed files after uploading
+
+  plugin :validation_helpers
+  plugin :determine_mime_type
+
+  Attacher.validate do
+    validate_min_size 1, message: "must not be empty"
+    validate_max_size 10*1024*1024, message: "is too large (max is 10 MB)"
+    validate_mime_type_inclusion %w[image/jpeg image/png image/tiff]
+    validate_extension_inclusion %w[jpg jpeg png tiff tif]
   end
 
-  # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url(*args)
-  #   # For Rails 3.1+ asset pipeline compatibility:
-  #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  #
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
+  process(:store) do |io, context|
+    versions = { original: io } # retain original
 
-  # Process files as they are uploaded:
-  # process :check_if_allowed
+    # download the uploaded file from the temporary storage
+    io.download do |original|
+      pipeline = ImageProcessing::MiniMagick.source(original)
 
-  #
-  # def scale(width, height)
-  #   # do something
-  # end
-
-  # Create different versions of your uploaded files:
-  version :original do
-    after :store, :check_if_allowed
-  end
-
-  version :preview do
-    process resize_to_fill: [269, 202]
-  end
-
-  version :medium do
-    process resize_to_fill: [870, 569]
-  end
-
-  version :thumb_mini do
-    process resize_to_fill: [170, 96]
-  end
-
-  version :quadratic do
-    process resize_to_fill: [800, 800]
-  end
-
-  version :quadratic_small, from_version: :quadratic do
-    process resize_to_fill: [100, 100]
-  end
-
-  # Add a white list of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
-  def extension_whitelist
-    %w(jpg jpeg gif png)
-  end
-
-  protected
-
-  def check_if_allowed myparam
-    allowed = Amazon::ProcessImage.new.return_labels(self.file.path)
-
-    return if allowed
-    # Delete image
-    begin
-      self.model.remove_images!
-      # flash[:alert] = "Your uploaded files contain not allowed image content. Please upload world of warcraft content."
-    rescue => e
-      amazon_logger ||= Logger.new("#{Rails.root}/log/amazon_logger.log")
-      amazon_logger.debug("While removing images from Carrierwave uploader something went wrong: #{e.message}.")
-      # flash[:alert] = "Something went wrong during image upload. Our engineers were notified."
+      versions[:supersmall] = pipeline.resize_to_fill!(50, 50)
+      versions[:small] = pipeline.resize_to_fill!(100, 100)
+      versions[:medium] = pipeline.resize_to_fill!(269, 202)
+      versions[:large] = pipeline.resize_to_fill!(870, 569)
     end
-  end
 
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+    versions
+  end
 end

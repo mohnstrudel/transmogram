@@ -5,14 +5,20 @@
       %h2.content-title Upload your file(s)
       .block-subtitle Create a post with one or multiple transmogrification pictures. Please select armor type and your character class.
       .contect-form.centered_narrow
-        =form_with model: Post.new, class: "form-block", local: true do |f|
+        =form_with model: Post.new, class: "form-block", multipart: true, local: true do |f|
           = f.hidden_field :user_id, value: current_user.id, class:'d-none'
           .row
             .col-xs-12.col-sm-6
               .form-group.fl_icon
                 .icon
                   %i.fa.fa-cloud-upload.cloud_upload_custom_size
-                = f.file_field :images, class: "form-input", multiple: true
+                =f.fields_for :images do |images_fields|
+                  =images_fields.hidden_field :image_value, value: images_fields.object.cached_image_data
+                  =images_fields.file_field :image_value
+                  =images_fields.check_box :_destroy unless images_fields.object.new_record?
+                =file_field_tag "files[]", multiple: true
+
+
             .col-xs-12.col-sm-6.fl_icon
               .form-group.fl_icon
                 .icon

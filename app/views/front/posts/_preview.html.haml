@@ -1,7 +1,7 @@
-.custom-column-5
+.custom-column-5{:style => "display: inline-block;", class: post.armor_type}
   .be-post
     %a.be-img-block{:href => post_path(post)}
-      =image_tag post.images.first.url(:preview)
+      =dig_images(object: post)
     %a.be-post-title{:href => post_path(post)}=post.title
     %span
       %a.be-post-tag{:href => "#"}=post.top_tags
