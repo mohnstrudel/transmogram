@@ -15,12 +15,9 @@
             %p.be-use-name=@user.try!(:nickname)
             / .be-user-info
             /   Barnsley, United Kingdom
-            / .be-text-tags.style-2
-            /   %a{:href => "page1.html"}> UI/UX
-            /   ,
-            /   = succeed "," do
-            /     %a{:href => "page1.html"} Web Design
-            /   %a{:href => "page1.html"} Art Direction
+            .be-text-tags.style-2
+              -@tags.each do |tag|
+                %a{:href => ""}=tag
 
             / =render partial: "front/users/shared/social"
 
@@ -35,6 +32,6 @@
           .tabs-content.clearfix
             .tab-info.active
               .row
-                -@user.posts.each do |post|
+                -@posts.each do |post|
                   .col-ml-12.col-xs-6.col-sm-4
                     =render partial: "front/posts/be_post", locals: { post: post }
