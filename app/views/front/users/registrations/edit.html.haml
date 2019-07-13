@@ -11,8 +11,9 @@
             .be-change-ava
               %a.be-ava-user.style-2{:href => "#"}
                 -if current_user.avatar.present?
-                  =image_tag current_user.avatar.url(:thumb)
+                  =image_tag current_user.avatar[:small].url
               .form-label Choose your avatar
+              =f.hidden_field :avatar, value: resource.cached_avatar_data
               =f.file_field :avatar, class: "btn color-4 size-2 hover-7 form-control-file"
           .be-large-post-align
             .row

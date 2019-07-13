@@ -31,5 +31,6 @@ module Transmogram
     config.generators.system_tests = nil
 
     config.eager_load_paths << Rails.root.join('lib')
+    config.assets.paths << Rails.root.join("app", "vendor", "assets")
   end
 end

@@ -23,3 +23,6 @@
 //= require front/jquery.viewportchecker.min
 //= require front/filters
 //= require front/global
+//= require bootstrap-fileinput
+//= require piexifjs
+//= require front/custom_plugins

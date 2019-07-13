@@ -61,7 +61,15 @@ bootstrap-daterangepicker@^3.0.3:
     jquery ">=1.10"
     moment "^2.9.0"
 
-bootstrap@^4.3.1:
+bootstrap-fileinput@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/bootstrap-fileinput/-/bootstrap-fileinput-5.0.3.tgz#8760203d849ac712fa9a3ce77b20bbf2d463a331"
+  integrity sha512-s2vU964F7Ws5TU1FEXwY1zzpvwjzjsaCJp8OkXDt24pXD4Mf6E/HCoDfAu+h9H3tqPlkYgPblIG0F2TQWeR5rg==
+  dependencies:
+    bootstrap ">= 3.4.1"
+    jquery ">= 1.9.0"
+
+"bootstrap@>= 3.4.1", bootstrap@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.3.1.tgz#280ca8f610504d99d7b6b4bfc4b68cec601704ac"
   integrity sha512-rXqOmH1VilAt2DyPzluTi2blhk17bO7ef+zLLPlWvG494pDxcM234pJ8wTc/6R40UWizAIIMgxjvxZg5kmsbag==
@@ -173,6 +181,11 @@ file-loader@^1.1.11:
     loader-utils "^1.0.2"
     schema-utils "^0.4.5"
 
+glyphicons@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/glyphicons/-/glyphicons-0.2.0.tgz#291d8ec974993a9fc88a72b58d540daf550da399"
+  integrity sha1-KR2OyXSZOp/IinK1jVQNr1UNo5k=
+
 has-ansi@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/has-ansi/-/has-ansi-2.0.0.tgz#34f5049ce1ecdf2b0649af3ef24e45ed35416d91"
@@ -208,6 +221,11 @@ jquery-ujs@^1.2.2:
   integrity sha1-ao7xAg5rbdo4W5CkvdwSjCHFY5c=
   dependencies:
     jquery ">=1.8.0"
+
+"jquery@>= 1.9.0":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
+  integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
 
 jquery@>=1.10, jquery@>=1.8.0, jquery@>=1.8.3, jquery@^3.3.1:
   version "3.3.1"
@@ -266,6 +284,11 @@ owl.carousel2@^2.2.1:
   integrity sha1-CdxbSue5t6PZE/5P6kxtbMeVfyI=
   dependencies:
     jquery ">=1.8.3"
+
+piexifjs@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/piexifjs/-/piexifjs-1.0.6.tgz#883811d73f447218d0d06e9ed7866d04533e59e0"
+  integrity sha512-0wVyH0cKohzBQ5Gi2V1BuxYpxWfxF3cSqfFXfPIpl5tl9XLS5z4ogqhUCD20AbHi0h9aJkqXNJnkVev6gwh2ag==
 
 postcss-modules-extract-imports@^1.2.0:
   version "1.2.1"

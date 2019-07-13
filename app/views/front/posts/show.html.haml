@@ -26,7 +26,7 @@
                   .swiper-wrapper
                     -@post.images.each_with_index do |post_image, index|
                       .swiper-slide{"data-val" => index}
-                        =image_tag post_image.image_value_url, class: 'img-responsive img-full'
+                        =image_tag post_image.image_value[:large].url, class: 'img-responsive img-full'
                         / .slider-text=@post.description
                   .pagination.hidden
                   .swiper-arrow-left.type-2
@@ -35,7 +35,7 @@
                   .swiper-wrapper
                     -@post.images.each_with_index do |post_image, index|
                       .swiper-slide{"data-val" => index, class: "#{'active current' if index == 0}"}
-                        =image_tag post_image.image_value_url
+                        =image_tag post_image.image_value[:medium].url
                   .pagination.hidden
               %p=@post.description
           .be-large-post-align
@@ -57,6 +57,7 @@
         .be-user-block
           .be-user-detail
             %a.be-ava-user{:href => ""}
+              =image_tag current_user.avatar[:small].url, style: "border-radius: 50%;"
               / %img{:alt => "", :src => current_user.avatar.url(:thumb), style: "border-radius: 50%;"}
             %p.be-use-name=current_user.nickname
             / %span.be-user-info
@@ -77,9 +78,10 @@
             =current_user.try(:bio)
         #likes.vote-form
           =render partial: "front/likes/form", locals: { likeable: @post }
-        / %a.be-button-vidget.add-btn.grey-style{:href => "blog-detail-2.html"}
-        /   %i.fa.fa-file-o>
-        /   ADD TO COLLECTION
+        -if current_user == @post.user
+          %a.be-button-vidget.grey-style{:href => edit_post_path(@post)}
+            %i.fa.fa-file-o>
+            EDIT POST
         %h3.letf-menu-article.text-center Recent Works
         .swiper-container{"data-center" => "0", "data-loop" => "1", "data-slides-per-view" => "1", "data-speed" => "500"}
           .swiper-wrapper

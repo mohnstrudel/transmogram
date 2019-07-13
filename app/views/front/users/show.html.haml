@@ -1,0 +1,40 @@
+/ MAIN CONTENT
+#content-block
+  .container.be-detail-container
+    .row
+      .col-xs-12.col-md-4.left-feild
+        .be-user-block.style-3
+          .be-user-detail
+            %a.be-ava-user.style-2
+              =image_tag @user.avatar[:small].url
+            / %a.be-ava-left.btn.color-1.size-2.hover-1
+            /   %i.fa.fa-plus>
+            /   Follow
+            / =render partial: "front/users/shared/send_message"
+
+            %p.be-use-name=@user.try!(:nickname)
+            / .be-user-info
+            /   Barnsley, United Kingdom
+            / .be-text-tags.style-2
+            /   %a{:href => "page1.html"}> UI/UX
+            /   ,
+            /   = succeed "," do
+            /     %a{:href => "page1.html"} Web Design
+            /   %a{:href => "page1.html"} Art Direction
+
+            / =render partial: "front/users/shared/social"
+
+            / =render partial: "front/users/shared/statistics"
+        =render partial: "front/users/shared/about"
+      .col-xs-12.col-md-8
+        .tab-wrapper.style-1
+          .tab-nav-wrapper
+            .nav-tab.clearfix
+              .nav-tab-item.active
+                %span Projects
+          .tabs-content.clearfix
+            .tab-info.active
+              .row
+                -@user.posts.each do |post|
+                  .col-ml-12.col-xs-6.col-sm-4
+                    =render partial: "front/posts/be_post", locals: { post: post }

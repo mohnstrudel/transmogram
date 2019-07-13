@@ -19,4 +19,12 @@ module FrontHelper
       puts "Error occured: #{e.message}"
     end
   end
+
+  def dig_params(params)
+    query = Array.new
+    query << params[:query] if params[:query].present?
+    query << ClassType.find(params[:class_type]).value if params[:class_type].present?
+    query << ArmorType.find(params[:armor_type]).value if params[:armor_type].present?
+    query.join(", ")
+  end
 end

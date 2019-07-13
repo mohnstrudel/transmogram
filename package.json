@@ -4,9 +4,12 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "bootstrap-daterangepicker": "^3.0.3",
+    "bootstrap-fileinput": "^5.0.3",
     "chartist": "^0.11.0",
+    "glyphicons": "^0.2.0",
     "jquery-ujs": "^1.2.2",
     "owl.carousel2": "^2.2.1",
+    "piexifjs": "^1.0.6",
     "webpack-jquery-ui": "^2.0.1"
   },
   "version": "1.0.0",

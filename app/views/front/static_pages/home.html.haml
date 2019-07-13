@@ -1,33 +1,16 @@
 .container-fluid.cd-main-content.custom-container
   .row
-    .col-md-2.left-feild
-      =form_with url: search_path, method: :get, class: 'input-search' do |form|
+    =form_with url: search_path, method: :get, class: 'input-search' do |form|
+      .col-md-2.left-feild
+
         = form.text_field :query, value: params[:query], placeholder: '#search'
         %i.fa.fa-search
         = form.submit
         / %input{:type => "submit", :value => ""}/
-    .col-md-10
-      .for-be-dropdowns
-        .be-drop-down
-          %i.icon-projects
-          %span.be-dropdown-content Armor Type
-          %ul.drop-down-list
-            %li.filter{"data-filter" => ".category-1"}
-              %a{"data-type" => "category-1"} Projects
-            %li.filter{"data-filter" => ".category-2"}
-              %a{"data-type" => "category-2"} Work in Progress
-            %li.filter{"data-filter" => ".category-3"}
-              %a{"data-type" => "category-3"} People
-        .be-drop-down
-          %i.icon-creative
-          %span.be-dropdown-content Character Class
-          %ul.drop-down-list
-            %li.filter{"data-filter" => ".category-4"}
-              %a Item - 1
-            %li.filter{"data-filter" => ".category-5"}
-              %a Item - 2
-            %li.filter{"data-filter" => ".category-1"}
-              %a Item - 3
+      .col-md-3
+        =form.select 'armor_type', options_for_select(ArmorType.all.map{|el| [el.value, el.id]}), { prompt: "Select Armor Type" }, class: 'form-control'
+      .col-md-3
+        =form.select 'class_type', options_for_select(ClassType.all.map{|el| [el.value, el.id]}), { prompt: "Select Character Class" }, class: 'form-control'
 .container-fluid.custom-container
   .row
     .col-md-2.left-feild

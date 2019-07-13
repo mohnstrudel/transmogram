@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   acts_as_voter
 
+  include ImageUploader::Attachment.new(:avatar) # adds an `avatar` virtual attribute
   # mount_uploader :avatar, AvatarUploader
 
   def admin?

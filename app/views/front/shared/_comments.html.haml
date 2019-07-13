@@ -9,7 +9,7 @@
     .be-comment
       .be-img-comment
         %a{:href => "#"}
-          %img.be-ava-comment{:alt => "", :src => ''}/
+          =image_tag comment.user.avatar[:small].url, class: "be-ava-comment"
       .be-comment-content
         %span.be-comment-name
           %a{:href => '#'}=comment.user.nickname

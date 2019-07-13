@@ -1,0 +1,45 @@
+/ MAIN CONTENT
+#content-block
+  .container.custom-container.be-detail-container
+    .block
+      %h2.content-title
+        -if action_name == "new"
+          Upload your file(s)
+        -else
+          Edit your post
+      .block-subtitle Use one or multiple transmogrification pictures. Please select armor type and your character class.
+      .contect-form.centered_narrow
+        =form_with model: @post, class: "form-block", multipart: true, local: true do |f|
+          = f.hidden_field :user_id, value: current_user.id, class:'d-none'
+          .row.margin_bot_20
+            .col-xs-12.col-sm-12
+              =f.fields_for :images do |images_fields|
+                =images_fields.hidden_field :image_value, value: images_fields.object.cached_image_value_data
+                /=images_fields.file_field :image_value
+                =image_tag images_fields.object.image_value[:small].url
+                =images_fields.label "Delete this image"
+                =images_fields.check_box :_destroy unless images_fields.object.new_record?
+          .row.margin_bot_20
+            .col-xs-12
+              .file-loading
+                =file_field_tag "files[]", multiple: true, id: "input-b6"
+          .row
+            .col-xs-12.col-sm-12.fl_icon
+              .form-group.fl_icon
+                .icon
+                  %i.fa.fa-tag.cloud_upload_custom_size
+                =f.text_field :title, class: "form-input", placeholder: "A neat title, e.g. 'My dark leather druid'"
+          .row.margin_bot_20
+            .col-xs-12.col-sm-6.fl_icon
+              .be-custom-select-block
+                =f.collection_select(:armor_type_id, ArmorType.all, :id, :value, {:prompt => "Select Armor Type"}, {class: "be-custom-select"})
+
+            .col-xs-12.col-sm-6.fl_icon
+              .be-custom-select-block
+                =f.collection_select(:class_type_id, ClassType.all, :id, :value, {:prompt => "Select Character Class"}, {class: "be-custom-select"})
+          .row
+            .col-xs-12
+              .form-group
+                =f.text_area :description, class: 'form-input', placeholder: "Insert your description there. Tags can be created using #-symbol. For example 'I love my #paladin #sunset set'"
+              = link_to 'Delete', post_path(@post), class: 'btn color-2 size-2 hover-1 pull-left', method: :delete, data: { confirm: 'Are you sure?' }
+              = f.submit class: 'btn color-1 size-2 hover-1 pull-right', style: "margin-right: 0px;"

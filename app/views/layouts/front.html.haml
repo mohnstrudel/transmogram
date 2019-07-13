@@ -27,9 +27,10 @@
         .alert{class: "alert-#{key}"}
           -if value.is_a?(Array)
             =value.shift
-            %ul
-              -value.reduce.each do |error_message|
-                %li=error_message
+            -if value.any?
+              %ul
+                -value.reduce.each do |error_message|
+                  %li=error_message
           -else
             =value
       = yield
