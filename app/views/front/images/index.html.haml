@@ -1,0 +1,9 @@
+/ MAIN CONTENT
+#content-block.gallery-block
+  .head-bg
+    .head-bg-img
+    .head-bg-content
+      %h1 Accept or decline pictures
+  .custom-container.gallery-container
+    .container#list_images
+      =render partial: 'front/images/list_images', locals: { images: @images }

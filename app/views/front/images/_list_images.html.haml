@@ -1,0 +1,12 @@
+-images.each do |image|
+  .gallery-box.clearfix
+    %a.gallery-a
+      =image_tag image.image_value[:small].url
+    .gallery-info
+      %h3 Lorem title text
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab architecto aut corporis cumque dignissimos eos exercitationem facere labore labori.
+    .gallery-btn
+      =link_to "ACCEPT", activate_path(image), class: "btn-login btn color-2 size-2 hover-2", remote: true, method: :post
+      =link_to "DELETE", image_path(image), class: "btn-login btn color-3 size-2 hover-2", method: :delete, remote: true
+
+

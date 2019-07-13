@@ -15,6 +15,11 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resources :users, only: [:show]
 
+    resources :images
+    post 'activate_image/:id', to: 'images#activate', as: :activate
+    # match :activate_image, to: :id', as: :activate, via: :post
+    # match :delete_image to: 'likes#destroy', as: :unlike, via: :post
+
     get 'search' => 'search#index'
     get :help, to: 'static_pages#help'
     get :contact, to: 'static_pages#contact'
