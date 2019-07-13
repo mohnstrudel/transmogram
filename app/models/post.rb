@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   acts_as_commentable
   acts_as_votable
 
+  # has_many :active_images, class_name: 'Image', ->{ Image.active }
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
 
@@ -14,7 +15,10 @@ class Post < ApplicationRecord
   has_many :post_hash_tags, dependent: :destroy
   has_many :hash_tags, through: :post_hash_tags
 
-  # scope :with_images, -> { where(images: any?) }
+  # scope :active_images, -> { where(images: any?) }
+  scope :active_images, ->{
+    joins(:images).merge(Image.active)
+  }
 
   after_commit :create_hash_tags, on: :create
 

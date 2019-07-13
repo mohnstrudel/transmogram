@@ -49,6 +49,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'mini_magick'
 gem 'pagy'
+gem 'placeholdit'
 gem 'redis-rails'
 gem "shrine"
 gem 'sidekiq'
