@@ -45,7 +45,7 @@ class Front::PostsController < FrontController
         flash[:success] = "Your post upload request was created. If your images do contain WoW characters, everything will be okay and your post should appear within a minute on the main page."
         redirect_to root_path
         # if params[:images].present?
-        #   params[:images].each { |image| @post.images.create(image_value: image, validate: true) }
+        #   params[:images].each { |image| @post.active_images.create(image_value: image, validate: true) }
       else
         # @post.errors[:base] << "You must attach at least one image"
         flash[:alarm] = ["Errors encountered:", @post.errors.full_messages]

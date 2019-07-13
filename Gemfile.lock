@@ -927,6 +927,7 @@ GEM
     orm_adapter (0.5.0)
     pagy (3.3.2)
     pg (1.1.4)
+    placeholdit (0.0.5)
     public_suffix (3.1.1)
     puma (3.12.1)
     rack (2.0.7)
@@ -1069,6 +1070,7 @@ DEPENDENCIES
   mini_magick
   pagy
   pg (>= 0.18, < 2.0)
+  placeholdit
   puma (~> 3.11)
   rails (~> 5.2.2)
   redis-rails

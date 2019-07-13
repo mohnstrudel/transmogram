@@ -1,7 +1,7 @@
 / THE FOOTER
 %footer
   .footer_slider
-    .swiper-container{"data-add-slides" => "19", "data-autoplay" => "0", "data-center" => "0", "data-lg-slides" => "19", "data-md-slides" => "14", "data-slides-per-view" => "responsive", "data-sm-slides" => "8", "data-speed" => "500", "data-xs-slides" => "4"}
+    .swiper-container{"data-add-slides" => "16", "data-autoplay" => "0", "data-center" => "0", "data-lg-slides" => "16", "data-md-slides" => "16", "data-slides-per-view" => "responsive", "data-sm-slides" => "8", "data-speed" => "500", "data-xs-slides" => "4"}
       .swiper-wrapper
         -@footer_posts.each_with_index do |post, index|
           .swiper-slide{"data-val" => index, class: "#{'active' if index == 0}"}

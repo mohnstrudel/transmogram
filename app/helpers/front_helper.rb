@@ -13,10 +13,21 @@ module FrontHelper
   def dig_images(object:, kount: :first, attribute: "images", width: nil, height: nil, version: "medium")
     return "" unless object.send(attribute).present?
 
-    begin
-      return image_tag(object.send(attribute).send(kount).image_value[version.to_sym].url, width: width, height: height)
-    rescue => e
-      puts "Error occured: #{e.message}"
+    if object.send(attribute).send(kount).active
+      begin
+        return image_tag(object.send(attribute).send(kount).image_value[version.to_sym].url, width: width, height: height)
+      rescue => e
+        puts "Error occured: #{e.message}"
+      end
+    else
+      case version
+      when "medium"
+        return placeholdit_image_tag "248", text: "No active images!", background_color: '#E4CDAB'
+      when "small"
+        return placeholdit_image_tag "100", text: "No active images!", background_color: '#E4CDAB'
+      when "supersmall"
+        return placeholdit_image_tag "50", text: "No active images!", background_color: '#E4CDAB'
+      end
     end
   end
 
