@@ -41,5 +41,6 @@
             .col-xs-12
               .form-group
                 =f.text_area :description, class: 'form-input', placeholder: "Insert your description there. Tags can be created using #-symbol. For example 'I love my #paladin #sunset set'"
-              = link_to 'Delete', post_path(@post), class: 'btn color-2 size-2 hover-1 pull-left', method: :delete, data: { confirm: 'Are you sure?' }
+              - unless action_name == "new"
+                = link_to 'Delete', post_path(@post), class: 'btn color-2 size-2 hover-1 pull-left', method: :delete, data: { confirm: 'Are you sure?' }
               = f.submit class: 'btn color-1 size-2 hover-1 pull-right', style: "margin-right: 0px;"

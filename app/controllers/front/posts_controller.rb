@@ -54,7 +54,7 @@ class Front::PostsController < FrontController
         render :new
       end
     rescue => e
-      puts "Posts controller ´create´ action. Error: #{e.inspect}"
+      logger.info "Posts controller ´create´ action. Error: #{e.inspect}"
       flash[:alarm] = "Errors encountered: #{e.full_messages}"
       render :new
     end

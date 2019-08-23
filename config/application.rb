@@ -32,5 +32,7 @@ module Transmogram
 
     config.eager_load_paths << Rails.root.join('lib')
     config.assets.paths << Rails.root.join("app", "vendor", "assets")
+
+    config.secret_key_base = Figaro.env.secret_key_base
   end
 end

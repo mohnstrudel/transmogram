@@ -6,18 +6,21 @@ module FrontHelper
     begin
       image_tag object.images.first.value.url(version_name.to_sym)
     rescue => e
-      puts "Error occured: #{e.message}"
+      logger.info "Error occured: #{e.message}"
     end
   end
 
   def dig_images(object:, kount: :first, attribute: "images", width: nil, height: nil, version: "medium")
+    # usage: in haml:
+    # simple case -> = dig_images(object: post, version: "small")
+    # full case -> = dig_images(object: post, kount: :second, attribute: "pictures", width: 512, height: 256, version: "huge")
     return "" unless object.send(attribute).present?
 
     if object.send(attribute).send(kount).active
       begin
         return image_tag(object.send(attribute).send(kount).image_value[version.to_sym].url, width: width, height: height)
       rescue => e
-        puts "Error occured: #{e.message}"
+        logger.info "Error occured: #{e.message}"
       end
     else
       case version
