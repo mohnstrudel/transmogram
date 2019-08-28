@@ -15,7 +15,7 @@
           %a{:href => '#'}=comment.user.nickname
         %span.be-comment-time
           %i.fa.fa-clock-o
-          ="#{comment.created_at.strftime('%d %M %Y at %H:%m')}"
+          ="#{comment.created_at.strftime('%d.%m.%Y at %H:%m')}"
         %p.be-comment-text
           =comment.comment
   -if user_signed_in?

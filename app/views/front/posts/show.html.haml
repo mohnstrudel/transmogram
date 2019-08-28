@@ -24,7 +24,7 @@
               .be-large-post-slider.type-wide
                 .swiper-container.thumbnails-preview{"data-autoplay" => "0", "data-center" => "0", "data-loop" => "1", "data-slides-per-view" => "1", "data-speed" => "500"}
                   .swiper-wrapper
-                    -@post.active_images.each_with_index do |post_image, index|
+                    -@post.images.each_with_index do |post_image, index|
                       .swiper-slide{"data-val" => index}
                         =image_tag post_image.image_value[:large].url, class: 'img-responsive img-full'
                         / .slider-text=@post.description
@@ -33,7 +33,7 @@
                   .swiper-arrow-right.type-2
                 .swiper-container.thumbnails{"data-add-slides" => "5", "data-autoplay" => "0", "data-center" => "0", "data-lg-slides" => "5", "data-loop" => "0", "data-md-slides" => "5", "data-slides-per-view" => "responsive", "data-sm-slides" => "5", "data-speed" => "500", "data-xs-slides" => "3"}
                   .swiper-wrapper
-                    -@post.active_images.each_with_index do |post_image, index|
+                    -@post.images.each_with_index do |post_image, index|
                       .swiper-slide{"data-val" => index, class: "#{'active current' if index == 0}"}
                         =image_tag post_image.image_value[:medium].url
                   .pagination.hidden

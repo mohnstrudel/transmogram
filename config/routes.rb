@@ -6,6 +6,12 @@ Rails.application.routes.draw do
 
   scope module: :front do
     root "static_pages#home"
+
+    # Error pages
+    get "/404", to: 'errors#not_found'
+    get "/422", to: 'errors#unacceptable'
+    get "/500", to: 'errors#internal_error'
+
     scope module: :users do
       devise_for :users
     end

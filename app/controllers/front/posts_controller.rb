@@ -12,7 +12,7 @@ class Front::PostsController < FrontController
   end
 
   def show
-    @post = Post.includes(:comments).find(params[:id])
+    @post = Post.active_images.includes(:comments).find(params[:id])
     @similar_posts = Post.last(3)
   end
 

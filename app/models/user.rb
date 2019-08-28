@@ -12,6 +12,7 @@ class User < ApplicationRecord
   # mount_uploader :avatar, AvatarUploader
 
   def admin?
+    return false if roles.nil?
     roles.fetch("admin")
   end
 end

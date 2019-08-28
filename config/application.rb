@@ -34,5 +34,7 @@ module Transmogram
     config.assets.paths << Rails.root.join("app", "vendor", "assets")
 
     config.secret_key_base = Figaro.env.secret_key_base
+
+    config.exceptions_app = self.routes
   end
 end

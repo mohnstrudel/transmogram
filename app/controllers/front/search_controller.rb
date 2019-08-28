@@ -3,8 +3,7 @@ class Front::SearchController < FrontController
 
   def index
     if params[:query].empty?
-      @pagy, @posts = pagy(Post.all, link_extra: 'data-remote="true" class="my-class"')
-
+      @pagy, @posts = pagy(Post.where(search), link_extra: 'data-remote="true" class="my-class"')
     elsif params[:query].start_with?('#')
       query  = params[:query].gsub('#', '')
       @pagy, @posts = pagy(Post.joins(:hash_tags).where(hash_tags: {name:    query}).where(search), link_extra: 'data-remote="true" class="my-class"')
