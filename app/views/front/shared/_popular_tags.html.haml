@@ -3,6 +3,4 @@
   %ul
     -@tags.each do |tag|
       %li
-        / =form.submit tag[1], class: "filter"
         =link_to tag[1], search_path(query: tag[1]), class: "filter", remote: true
-        / %a.filter{href: search_path(query: tag[1])}=tag[1]

@@ -12,7 +12,11 @@ class Front::PostsController < FrontController
   end
 
   def show
-    @post = Post.active_images.includes(:comments).find(params[:id])
+    begin
+      @post = Post.active_images.includes(:comments).find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      @post = :not_active
+    end
     @similar_posts = Post.last(3)
   end
 

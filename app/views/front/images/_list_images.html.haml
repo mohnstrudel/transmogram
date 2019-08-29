@@ -1,7 +1,10 @@
 -images.each do |image|
   .gallery-box.clearfix
     %a.gallery-a
-      =image_tag image.image_value[:small].url
+      -if image.image_value[:small]
+        =image_tag image.image_value[:small].url
+      -else
+        =image_tag image.image_value.url, width: 100
     .gallery-info
       %h3=image.post.title
       %p=image.post.description

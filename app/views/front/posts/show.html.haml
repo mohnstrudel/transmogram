@@ -1,107 +1,110 @@
-/ MAIN CONTENT
-#content-block
-  .container.custom-container.be-detail-container
-    .row
-      .col-md-9.col-md-push-3
-        .be-large-post
-          .info-block
+- if @post == :not_active
+  =render 'post_not_active'
+- else
+  / MAIN CONTENT
+  #content-block
+    .container.custom-container.be-detail-container
+      .row
+        .col-md-9.col-md-push-3
+          .be-large-post
+            .info-block
+              .be-large-post-align
+                %span
+                  %i.fa.fa-thumbs-o-up
+                  =@post.votes_for.size
+                %span
+                  %i.fa.fa-eye
+                  =@post.impressionist_count
+                %span
+                  %i.fa.fa-comment-o
+                  =@post.comments.size
+            .blog-content.be-large-post-align
+              %h5.be-post-title.to=@post.title
+              %span.be-text-tags
+                %a.be-post-tag{:href => '#'}=@post.top_tags
+              .clear
+              .post-text
+                .be-large-post-slider.type-wide
+                  .swiper-container.thumbnails-preview{"data-autoplay" => "0", "data-center" => "0", "data-loop" => "1", "data-slides-per-view" => "1", "data-speed" => "500"}
+                    .swiper-wrapper
+                      -@post.images.each_with_index do |post_image, index|
+                        .swiper-slide{"data-val" => index}
+                          =image_tag post_image.image_value[:large].url, class: 'img-responsive img-full'
+                          / .slider-text=@post.description
+                    .pagination.hidden
+                    .swiper-arrow-left.type-2
+                    .swiper-arrow-right.type-2
+                  .swiper-container.thumbnails{"data-add-slides" => "5", "data-autoplay" => "0", "data-center" => "0", "data-lg-slides" => "5", "data-loop" => "0", "data-md-slides" => "5", "data-slides-per-view" => "responsive", "data-sm-slides" => "5", "data-speed" => "500", "data-xs-slides" => "3"}
+                    .swiper-wrapper
+                      -@post.images.each_with_index do |post_image, index|
+                        .swiper-slide{"data-val" => index, class: "#{'active current' if index == 0}"}
+                          =image_tag post_image.image_value[:medium].url
+                    .pagination.hidden
+                %p=@post.description
             .be-large-post-align
-              %span
-                %i.fa.fa-thumbs-o-up
-                =@post.votes_for.size
-              %span
-                %i.fa.fa-eye
-                =@post.impressionist_count
-              %span
-                %i.fa.fa-comment-o
-                =@post.comments.size
-          .blog-content.be-large-post-align
-            %h5.be-post-title.to=@post.title
-            %span.be-text-tags
-              %a.be-post-tag{:href => '#'}=@post.top_tags
-            .clear
-            .post-text
-              .be-large-post-slider.type-wide
-                .swiper-container.thumbnails-preview{"data-autoplay" => "0", "data-center" => "0", "data-loop" => "1", "data-slides-per-view" => "1", "data-speed" => "500"}
-                  .swiper-wrapper
-                    -@post.images.each_with_index do |post_image, index|
-                      .swiper-slide{"data-val" => index}
-                        =image_tag post_image.image_value[:large].url, class: 'img-responsive img-full'
-                        / .slider-text=@post.description
-                  .pagination.hidden
-                  .swiper-arrow-left.type-2
-                  .swiper-arrow-right.type-2
-                .swiper-container.thumbnails{"data-add-slides" => "5", "data-autoplay" => "0", "data-center" => "0", "data-lg-slides" => "5", "data-loop" => "0", "data-md-slides" => "5", "data-slides-per-view" => "responsive", "data-sm-slides" => "5", "data-speed" => "500", "data-xs-slides" => "3"}
-                  .swiper-wrapper
-                    -@post.images.each_with_index do |post_image, index|
-                      .swiper-slide{"data-val" => index, class: "#{'active current' if index == 0}"}
-                        =image_tag post_image.image_value[:medium].url
-                  .pagination.hidden
-              %p=@post.description
-          .be-large-post-align
-            %h3.letf-menu-article
-              Tags
-            .tags_block.clearfix
-              %ul
-                -@post.hash_tags.each do |tag|
-                  %li
-                    %a{:href => "#"}=tag.name
-        .row
-          -@similar_posts.each do |post|
-            =render partial: "front/posts/preview", locals: { post: post }
+              %h3.letf-menu-article
+                Tags
+              .tags_block.clearfix
+                %ul
+                  -@post.hash_tags.each do |tag|
+                    %li
+                      %a{:href => "#"}=tag.name
+          .row
+            -@similar_posts.each do |post|
+              =render partial: "front/posts/preview", locals: { post: post }
 
-        #commentary
-          =render partial: "front/shared/comments", locals: { object: @post }
+          #commentary
+            =render partial: "front/shared/comments", locals: { object: @post }
 
-      .col-md-3.col-md-pull-9.left-feild
-        .be-user-block
-          .be-user-detail
-            %a.be-ava-user{:href => ""}
-              =image_tag current_user.avatar[:small].url, style: "border-radius: 50%;"
-              / %img{:alt => "", :src => current_user.avatar.url(:thumb), style: "border-radius: 50%;"}
-            %p.be-use-name=current_user.nickname
-            / %span.be-user-info
-            /   Singapore, Singapore
-          / .be-user-activity-block
-          /   .row
-          /     .col-lg-6
-          /       %a.be-user-activity-button.be-follow-type{:href => "blog-detail-2.html"}
-          /         %i.fa.fa-plus>
-          /         FOLLOW
-          /     .col-lg-6
-          /       %a.col-lg-6.be-user-activity-button.send-btn.be-message-type{:href => "blog-detail-2.html"}
-          /         %i.fa.fa-envelope-o>
-          /         MESSAGE
-          %h5.be-title
-            About
-          %p.be-text-userblock
-            =current_user.try(:bio)
-        #likes.vote-form
-          =render partial: "front/likes/form", locals: { likeable: @post }
-        -if current_user == @post.user
-          %a.be-button-vidget.grey-style{:href => edit_post_path(@post)}
-            %i.fa.fa-file-o>
-            EDIT POST
-        %h3.letf-menu-article.text-center Recent Works
-        .swiper-container{"data-center" => "0", "data-loop" => "1", "data-slides-per-view" => "1", "data-speed" => "500"}
-          .swiper-wrapper
-            -current_user.posts.last(5).each do |last_post|
-              .swiper-slide
-                .be-post
-                  %a.be-img-block{:href => post_path(last_post)}
-                    =dig_images(object: last_post)
-                  %a.be-post-title{:href => post_path(last_post)}=last_post.description_preview
-                  %span
-                    -last_post.hash_tags.each do |hash_tag|
-                      %a.be-post-tag{:href => ""}=hash_tag.name
-                  .info-block
+        .col-md-3.col-md-pull-9.left-feild
+          .be-user-block
+            .be-user-detail
+              %a.be-ava-user{:href => ""}
+                =image_tag current_user.avatar[:small].url, style: "border-radius: 50%;"
+                / %img{:alt => "", :src => current_user.avatar.url(:thumb), style: "border-radius: 50%;"}
+              %p.be-use-name=current_user.nickname
+              / %span.be-user-info
+              /   Singapore, Singapore
+            / .be-user-activity-block
+            /   .row
+            /     .col-lg-6
+            /       %a.be-user-activity-button.be-follow-type{:href => "blog-detail-2.html"}
+            /         %i.fa.fa-plus>
+            /         FOLLOW
+            /     .col-lg-6
+            /       %a.col-lg-6.be-user-activity-button.send-btn.be-message-type{:href => "blog-detail-2.html"}
+            /         %i.fa.fa-envelope-o>
+            /         MESSAGE
+            %h5.be-title
+              About
+            %p.be-text-userblock
+              =current_user.try(:bio)
+          #likes.vote-form
+            =render partial: "front/likes/form", locals: { likeable: @post }
+          -if current_user == @post.user
+            %a.be-button-vidget.grey-style{:href => edit_post_path(@post)}
+              %i.fa.fa-file-o>
+              EDIT POST
+          %h3.letf-menu-article.text-center Recent Works
+          .swiper-container{"data-center" => "0", "data-loop" => "1", "data-slides-per-view" => "1", "data-speed" => "500"}
+            .swiper-wrapper
+              -current_user.posts.last(5).each do |last_post|
+                .swiper-slide
+                  .be-post
+                    %a.be-img-block{:href => post_path(last_post)}
+                      =dig_images(object: last_post)
+                    %a.be-post-title{:href => post_path(last_post)}=last_post.description_preview
                     %span
-                      %i.fa.fa-thumbs-o-up
-                      =last_post.votes_for.size
-                    %span
-                      %i.fa.fa-eye
-                      =last_post.impressionist_count
-                    %span
-                      %i.fa.fa-comment-o
-                      =last_post.comments.size
-          .pagination
+                      -last_post.hash_tags.each do |hash_tag|
+                        %a.be-post-tag{:href => ""}=hash_tag.name
+                    .info-block
+                      %span
+                        %i.fa.fa-thumbs-o-up
+                        =last_post.votes_for.size
+                      %span
+                        %i.fa.fa-eye
+                        =last_post.impressionist_count
+                      %span
+                        %i.fa.fa-comment-o
+                        =last_post.comments.size
+            .pagination
