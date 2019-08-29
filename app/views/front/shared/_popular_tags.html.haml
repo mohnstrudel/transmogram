@@ -1,21 +1,8 @@
-%ul
-  %li
-    %a.filter{"data-filter" => ".category-6"} photoshop
-  %li
-    %a.filter{"data-filter" => ".category-1"} graphic
-  %li
-    %a.filter{"data-filter" => ".category-2"} art
-  %li
-    %a.filter{"data-filter" => ".category-3"} website
-  %li
-    %a.filter{"data-filter" => ".category-4"} logo
-  %li
-    %a.filter{"data-filter" => ".category-5"} identity
-  %li
-    %a.filter{"data-filter" => ".category-6"} logo design
-  %li
-    %a.filter{"data-filter" => ".category-1"} interactive
-  %li
-    %a.filter{"data-filter" => ".category-2"} blue
-  %li
-    %a.filter{"data-filter" => ".category-3"} branding
+/ We get Tags from static_pages controller (home)
+=form_with url: search_path, method: :get do |form|
+  %ul
+    -@tags.each do |tag|
+      %li
+        / =form.submit tag[1], class: "filter"
+        =link_to tag[1], search_path(query: tag[1]), class: "filter", remote: true
+        / %a.filter{href: search_path(query: tag[1])}=tag[1]

@@ -31,7 +31,12 @@ class Post < ApplicationRecord
 
   def create_hash_tags
     extract_name_hash_tags.each do |name|
-      hash_tags.create(name: name)
+      # Check if a HashTag already exists (we dont want to duplicate HashTags!)
+      hash_tag_object = HashTag.find_or_create_by(name: name)
+      # Increase the counter
+      hash_tag_object.increment!(:count)
+      # Create the binding record
+      post_hash_tags.create(post_id: id, hash_tag_id: hash_tag_object.id)
     end
   end
 
