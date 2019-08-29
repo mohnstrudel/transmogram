@@ -1,16 +1,19 @@
 .container-fluid.cd-main-content.custom-container
-  .row
+  .row.search_padding_bottom
     =form_with url: search_path, method: :get, class: 'input-search' do |form|
       .col-md-2.left-feild
-
-        = form.text_field :query, value: params[:query], placeholder: '#search'
-        %i.fa.fa-search
-        = form.submit
+        = form.text_field :query, value: params[:query], placeholder: '#hashtag'
         / %input{:type => "submit", :value => ""}/
-      .col-md-3
-        =form.select 'armor_type', options_for_select(ArmorType.all.map{|el| [el.value, el.id]}), { prompt: "Select Armor Type" }, class: 'form-control'
-      .col-md-3
-        =form.select 'class_type', options_for_select(ClassType.all.map{|el| [el.value, el.id]}), { prompt: "Select Character Class" }, class: 'form-control'
+      .col-md-4
+        .be-custom-select-block
+          =form.select 'armor_type', options_for_select(ArmorType.all.map{|el| [el.value, el.id]}), { prompt: "Select Armor Type" }, class: 'be-custom-select'
+      .col-md-4
+        .be-custom-select-block
+          =form.select 'class_type', options_for_select(ClassType.all.map{|el| [el.value, el.id]}), { prompt: "Select Character Class" }, class: 'be-custom-select'
+      .col-md-2.left-feild
+        .submit-custom-select-block
+          = form.submit 'Press to search...', class: "be-custom-submit"
+
 .container-fluid.custom-container
   .row
     .col-md-2.left-feild
