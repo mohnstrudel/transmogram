@@ -7,7 +7,13 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = stylesheet_link_tag    'front', media: 'all'
     = javascript_include_tag 'front'
+    = javascript_include_tag "https://www.googletagmanager.com/gtag/js?id=UA-43132765-5"
+    = javascript_include_tag 'front/metrics'
     = favicon_link_tag asset_path('front_default/favicon.png')
+    %noscript
+      %div
+        %img{:alt => "", :src => "https://mc.yandex.ru/watch/55119886", :style => "position:absolute; left:-9999px;"}/
+
 
   %body
     / .be-loader
