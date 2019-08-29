@@ -310,10 +310,6 @@ $(function() {
 		$(".large-popup.login").slideUp();
 	});
 
-	$(".be-register").on("click",function(){
-		$(".large-popup.register").slideDown();
-		return false;
-	});
 	$(".large-popup.register .close-button").on("click", function(){
 		$(".large-popup.register").slideUp();
 	});

@@ -1,0 +1,30 @@
+.container.be-detail-container
+  .row
+    .col-xs-12.col-md-12._editor-content_
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .be-large-post
+          .info-block.style-2
+            .be-large-post-align
+              %h3.info-block-label Sign up
+          .be-large-post-align
+            .row
+              .input-col.col-xs-12.col-sm-6
+                .form-group.fg_icon.focus-2
+                  .form-label Email
+                  =f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input"
+              .input-col.col-xs-12.col-sm-6
+                .form-group.focus-2
+                  .form-label Your Nickname (optional)
+                  =f.text_field :nickname, class: "form-input"
+            .row
+              .input-col.col-xs-12.col-sm-12
+                .form-group.fg_icon.focus-2
+                  .form-label Password
+                  =f.password_field :password, autocomplete: "new-password", class: "form-input"
+            .row
+              .input-col.col-xs-12.col-sm-12
+                .form-group.focus-2.fg_icon
+                  .form-label Password confirmation
+                  =f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input"
+        =f.submit 'Proceed', class: "btn full color-1 size-1 hover-1 add_section"

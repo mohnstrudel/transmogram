@@ -590,6 +590,8 @@ form.input-search { position: relative; margin-bottom: 50px; }
 
 .be-drop-down:after { content: "\f107"; font-family: FontAwesome; font-size: 18px; position: absolute; top: 50%; right: 25px; -moz-transform: translateY(-50%) rotate(0); -ms-transform: translateY(-50%) rotate(0); -webkit-transform: translateY(-50%) rotate(0); transform: translateY(-50%) rotate(0); }
 
+.no-after:after { content: none !important; }
+
 @media screen and (max-width: 1200px) { .be-drop-down { margin-right: 0; } }
 
 @media screen and (max-width: 991px) { .be-drop-down { display: block; margin-bottom: 30px !important; margin-right: 0px; }
