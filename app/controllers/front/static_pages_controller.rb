@@ -10,11 +10,21 @@ class Front::StaticPagesController < FrontController
     @pagy, @posts = pagy(Post.all, link_extra: 'data-remote="true" class="my-class"')
     # Usage: @pagy, @records = pagy(Product.some_scope)
     # Old call: @posts = Post.all
+
+    @title = "Home"
+
+    set_meta_tags title: @title, description: @seo_meta_description, keywords: @seo_meta_keywords
   end
 
   def help
   end
 
   def contact
+  end
+
+  def about
+    @title = "About"
+
+    set_meta_tags title: @title, description: @seo_meta_description, keywords: @seo_meta_keywords
   end
 end

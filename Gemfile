@@ -42,11 +42,13 @@ gem 'devise'
 gem 'dotenv'
 gem "figaro"
 gem "fog-aws"
+gem 'friendly_id'
 gem 'haml-rails'
 gem 'image_processing'
 gem 'impressionist'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'meta-tags'
 gem 'mini_magick'
 gem 'pagy'
 gem 'placeholdit'

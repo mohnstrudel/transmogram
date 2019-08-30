@@ -25,9 +25,17 @@ class Post < ApplicationRecord
   validates :title, :armor_type, :class_type, presence: true
   validate :image_presence
 
-  # def self.create(attributes = nil, &block)
-  #   UploadWorker.perform_async(super)
-  # end
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+
+  # Try building a slug based on the following fields in
+  # increasing order of specificity.
+  def slug_candidates
+    [
+      :title,
+      [:title, :id]
+    ]
+  end
 
   def create_hash_tags
     extract_name_hash_tags.each do |name|

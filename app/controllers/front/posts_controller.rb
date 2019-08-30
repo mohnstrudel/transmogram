@@ -13,7 +13,11 @@ class Front::PostsController < FrontController
 
   def show
     begin
-      @post = Post.active_images.includes(:comments).find(params[:id])
+      @post = Post.active_images.includes(:comments).friendly.find(params[:id])
+      @page_title = @post.title
+      @page_description = @post.description
+      @page_keywords = @post.extract_name_hash_tags.push(*@seo_meta_keywords).uniq
+      set_meta_tags title: @page_title, description: @page_description, keywords: @page_keywords
     rescue ActiveRecord::RecordNotFound => e
       @post = :not_active
     end
@@ -93,7 +97,7 @@ class Front::PostsController < FrontController
   end
 
   def find_post
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
   end
 
   def post_params
