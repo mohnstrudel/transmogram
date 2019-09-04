@@ -22,6 +22,10 @@ class Front::ImagesController < FrontController
   def destroy
     @image = Image.find(params[:id])
     if @image.destroy
+      if @image.post.images.empty?
+        @image.post.destroy
+        puts "Post, associated with images, destroyed"
+      end
       @images= Image.where(active: false)
       respond_to do |format|
         format.js { render 'destroy', layout: false }

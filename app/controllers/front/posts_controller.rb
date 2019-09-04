@@ -13,7 +13,8 @@ class Front::PostsController < FrontController
 
   def show
     begin
-      @post = Post.active_images.includes(:comments).friendly.find(params[:id])
+      @post = Post.includes(:comments).includes(:images).active_images.friendly.find(params[:id])
+      @post_images = @post.images.active
 
       @page_title = @post.title
       @page_description = @post.description

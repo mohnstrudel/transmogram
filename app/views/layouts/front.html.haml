@@ -1,19 +1,12 @@
 !!!
 %html
   %head
-    = display_meta_tags site: 'Transmogram.com - World of Warcraft Transmogrification', og: { title: 'Transmogram.com - World of Warcraft Transmogrification', type: 'website', url: 'https://transmogram.com', image: "#{request.protocol}#{request.host_with_port}" + asset_path('background.jpg'), description: @seo_meta_description, site_name: :site}
+    = display_meta_tags site: 'Transmogram.com - World of Warcraft Transmogrification', og: { title: 'Transmogram.com - World of Warcraft Transmogrification', type: 'website', url: 'https://transmogram.com', image: "#{request.protocol}#{request.host_with_port}" + asset_path('background-compressor.jpg'), description: @seo_meta_description, site_name: :site}
     = csrf_meta_tags
     = csp_meta_tag
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = stylesheet_link_tag    'front', media: 'all'
-    = javascript_include_tag 'front'
-    = javascript_include_tag "https://www.googletagmanager.com/gtag/js?id=UA-43132765-5"
-    = javascript_include_tag 'front/metrics'
     = favicon_link_tag asset_path('front_default/favicon.png')
-    %noscript
-      %div
-        %img{:alt => "", :src => "https://mc.yandex.ru/watch/55119886", :style => "position:absolute; left:-9999px;"}/
-
 
   %body
     / .be-loader
@@ -41,3 +34,10 @@
             =value
       = yield
     =render partial: "front/shared/footer"
+
+  = javascript_include_tag 'front'
+  = javascript_include_tag "https://www.googletagmanager.com/gtag/js?id=UA-43132765-5"
+  = javascript_include_tag 'front/metrics'
+  %noscript
+    %div
+      %img{:alt => "", :src => "https://mc.yandex.ru/watch/55119886", :style => "position:absolute; left:-9999px;"}/

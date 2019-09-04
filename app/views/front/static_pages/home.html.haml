@@ -34,6 +34,5 @@
           =render partial: 'front/shared/popular_tags'
     .col-md-10
       #container-mix.row._post-container_
-        -cache @posts do
-          =render partial: "front/posts/posts", locals: { posts: @posts}
+        =render partial: "front/posts/posts", locals: { posts: @posts}
 

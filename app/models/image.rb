@@ -1,5 +1,5 @@
 class Image < ApplicationRecord
-  belongs_to :post
+  belongs_to :post, touch: true
   include ImageUploader::Attachment.new(:image_value) # adds an `image` virtual attribute
 
   scope :active, -> { where(active: true) }
