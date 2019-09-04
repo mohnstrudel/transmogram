@@ -63,9 +63,9 @@
           .be-user-block
             .be-user-detail
               %a.be-ava-user{:href => ""}
-                =image_tag current_user.avatar[:small].url, style: "border-radius: 50%;"
+                =image_tag @post_user.avatar[:small].url, style: "border-radius: 50%;"
                 / %img{:alt => "", :src => current_user.avatar.url(:thumb), style: "border-radius: 50%;"}
-              %p.be-use-name=current_user.nickname
+              %p.be-use-name=@post_user.nickname
               / %span.be-user-info
               /   Singapore, Singapore
             / .be-user-activity-block
@@ -81,17 +81,17 @@
             %h5.be-title
               About
             %p.be-text-userblock
-              =current_user.try(:bio)
+              =@post_user.try(:bio)
           #likes.vote-form
             =render partial: "front/likes/form", locals: { likeable: @post }
-          -if current_user == @post.user
+          -if current_user == @post_user
             %a.be-button-vidget.grey-style{:href => edit_post_path(@post)}
               %i.fa.fa-file-o>
               EDIT POST
           %h3.letf-menu-article.text-center Recent Works
           .swiper-container{"data-center" => "0", "data-loop" => "1", "data-slides-per-view" => "1", "data-speed" => "500"}
             .swiper-wrapper
-              -current_user.posts.last(5).each do |last_post|
+              -@post_user.posts.last(5).each do |last_post|
                 .swiper-slide
                   .be-post
                     %a.be-img-block{:href => post_path(last_post)}

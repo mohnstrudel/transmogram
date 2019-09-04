@@ -15,6 +15,7 @@ class Front::PostsController < FrontController
     begin
       @post = Post.includes(:comments).includes(:images).active_images.friendly.find(params[:id])
       @post_images = @post.images.active
+      @post_user = @post.user
 
       @page_title = @post.title
       @page_description = @post.description
