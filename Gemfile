@@ -55,6 +55,8 @@ gem 'placeholdit'
 # gem 'redis-rails'
 gem "shrine"
 gem 'sidekiq'
+gem 'sitemap_generator'
+gem 'whenever', require: false
 gem 'xray-rails'
 
 

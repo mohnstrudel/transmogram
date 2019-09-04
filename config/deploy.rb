@@ -50,8 +50,6 @@ set :yarn_env_variables, {}
 # Link the dirs, so uploaded assets won't be deleted after each deployment
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads node_modules client/node_modules}
 
-
-
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
   task :make_dirs do
@@ -109,6 +107,13 @@ namespace :deploy do
     end
   end
 
+  desc 'Create new sitemap and ping search engines'
+  task :refresh_sitemap do
+    on roles(:app) do
+      invoke 'sitemap:refresh'
+    end
+  end
+
   # if Rake::Task.task_defined?('deploy:published')
   #   after 'deploy:published', 'delayed_job:restart'
   # end
@@ -116,6 +121,7 @@ namespace :deploy do
 
   before :starting,     :check_revision
   before :starting,     :master_key
+  after  :finishing,    :refresh_sitemap
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart

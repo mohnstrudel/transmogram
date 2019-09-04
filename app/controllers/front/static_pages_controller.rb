@@ -24,6 +24,7 @@ class Front::StaticPagesController < FrontController
 
   def about
     @title = "About"
+    @seo_meta_keywords.push(['about wow fashion', 'about transmogram'])
 
     set_meta_tags title: @title, description: @seo_meta_description, keywords: @seo_meta_keywords
   end

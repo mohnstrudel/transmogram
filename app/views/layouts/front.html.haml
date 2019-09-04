@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    = display_meta_tags site: 'Transmogram.com - World of Warcraft Transmogrification'
+    = display_meta_tags site: 'Transmogram.com - World of Warcraft Transmogrification', og: { title: 'Transmogram.com - World of Warcraft Transmogrification', type: 'website', url: 'https://transmogram.com', image: "#{request.protocol}#{request.host_with_port}" + asset_path('background.jpg'), description: @seo_meta_description, site_name: :site}
     = csrf_meta_tags
     = csp_meta_tag
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
