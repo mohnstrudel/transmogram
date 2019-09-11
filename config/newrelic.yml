@@ -3,7 +3,7 @@
 # .NET, PHP, Python, Node, and Go applications with deep visibility and low
 # overhead.  For more information, visit www.newrelic.com.
 #
-# Generated April 10, 2019
+# Generated September 11, 2019
 #
 # This configuration file is custom generated for Handsome Cake Development
 #
@@ -16,7 +16,7 @@ common: &default_settings
 
   # Your application name. Renaming here affects where data displays in New
   # Relic.  For more details, see https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/renaming-applications
-  app_name: Transmogram (Production)
+  app_name: Transmogram
 
   # To disable the agent regardless of other settings, uncomment the following:
   # agent_enabled: false
@@ -30,7 +30,7 @@ common: &default_settings
 # If your application has other named environments, configure them here.
 development:
   <<: *default_settings
-  app_name: Transmogram (Development)
+  app_name: Transmogram | Development
 
 test:
   <<: *default_settings
@@ -39,7 +39,8 @@ test:
 
 staging:
   <<: *default_settings
-  app_name: My Application (Staging)
+  app_name: Tmog Stating
 
 production:
   <<: *default_settings
+  app_name: Transmogram | Production

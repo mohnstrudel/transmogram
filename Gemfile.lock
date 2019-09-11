@@ -987,6 +987,7 @@ GEM
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
     net-ssh (5.2.0)
+    newrelic_rpm (6.6.0.358)
     nio4r (2.5.1)
     nio4r (2.5.1-java)
     nokogiri (1.10.4)
@@ -1046,6 +1047,7 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rollbar (2.22.1)
     ruby-vips (2.0.14)
       ffi (~> 1.9)
     ruby_dep (1.5.0)
@@ -1160,11 +1162,13 @@ DEPENDENCIES
   listen
   meta-tags
   mini_magick
+  newrelic_rpm
   pagy
   pg
   placeholdit
   puma (= 4.0.1)
   rails
+  rollbar
   sassc-rails
   shrine
   sidekiq

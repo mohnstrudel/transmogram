@@ -1,3 +1,5 @@
+include Utility
+
 class FrontController < ApplicationController
   layout 'front'
 
@@ -9,7 +11,7 @@ class FrontController < ApplicationController
   end
 
   def setup_seo
-    @seo_meta_keywords = ["world of warcraft", "transmogrification", "transmog", "tmog", "wow", 'transmog fashion', 'wow fashion', 'world of warcraft fashion', 'world of warcraft transmog fashion']
-    @seo_meta_description = "Transmogram.com - your World of Warcraft Transmogrification showroom. Show case your best and most stylish WoW Tier Sets or other custom fashion builds. Review other peoples creations, comment and upvote them!"
+    @seo_meta_keywords = Utility::Seo.build_keywords
+    @seo_meta_description = Utility::Seo.build_description
   end
 end
