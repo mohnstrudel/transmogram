@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
+  audited associated_with: :user
+
   belongs_to :armor_type, optional: true
   belongs_to :class_type, optional: true
 

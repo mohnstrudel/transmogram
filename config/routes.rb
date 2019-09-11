@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get :help, to: 'static_pages#help'
     get :contact, to: 'static_pages#contact'
     get :about, to: 'static_pages#about'
+    get :audits, to: 'static_pages#audits'
   end
 
   namespace :admin do

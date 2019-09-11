@@ -37,6 +37,7 @@ gem 'jbuilder'
 # Custom gems
 gem 'acts_as_commentable'
 gem 'acts_as_votable'
+gem 'audited'
 gem 'aws-sdk'
 gem 'devise'
 gem 'dotenv'
@@ -58,6 +59,7 @@ gem 'rollbar'
 gem "shrine"
 gem 'sidekiq'
 gem 'sitemap_generator'
+gem 'verbs'
 gem 'whenever', require: false
 gem 'xray-rails'
 

@@ -1,0 +1,6 @@
+/ Reihenfolge
+/ @audits = Audited::Audit.pluck(:auditable_type, :action, :created_at, :auditable_id)
+
+-@audits.each do |audit|
+  .gallery-info
+    %p="A #{link_to audit[0].downcase, audit[0].downcase.pluralize + '/' + audit[3].to_s} was #{audit[1].verb.conjugate :tense => :past, aspect: :perfective} on #{audit[2]}".html_safe

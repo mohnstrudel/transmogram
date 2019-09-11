@@ -28,4 +28,8 @@ class Front::StaticPagesController < FrontController
 
     set_meta_tags title: @title, keywords: @seo_meta_keywords
   end
+
+  def audits
+    @audits = Audited::Audit.pluck(:auditable_type, :action, :created_at, :auditable_id)
+  end
 end
