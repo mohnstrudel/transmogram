@@ -16,5 +16,14 @@
   /   %a{:href => "site-map.html"} Site Map
   / %li
   /   %a{:href => "organization.html"} Organization
-  %li#ad-work-li
-    =link_to 'Add Work', new_post_path, class: 'btn btn-large color-1', id: 'add-work-btn'
+  %li.ad-work-li
+    =link_to 'Add Work', new_post_path, class: 'btn btn-large color-1 add-work-btn'
+  -if current_user
+    %li.hide_on_big_screens.margin_bot_2em
+      =link_to 'Profile', edit_user_registration_path, class: "btn btn-large color-1 add-work-btn login-btn"
+    %li.hide_on_big_screens
+      =link_to 'Logout', destroy_user_session_path, class: "btn btn-large color-1 add-work-btn login-btn", method: :delete
+
+  -else
+    %li.ad-work-li.hide_on_big_screens
+      =link_to 'Log in', new_user_session_path, class: 'btn btn-large color-1 add-work-btn login-btn'

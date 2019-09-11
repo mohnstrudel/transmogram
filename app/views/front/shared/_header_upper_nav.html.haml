@@ -8,26 +8,27 @@
       %button.cmn-toggle-switch.cmn-toggle-switch__htx
         %span
       =render partial: "front/shared/header_upper_nav_menu"
-    -if current_user
-      .login-header-block
-        .login-block
-          =link_to 'Logout', destroy_user_session_path, class: "btn-login btn color-1 size-2 hover-2", method: :delete
-      .login-header-block
-        .login-block
-          =link_to edit_user_registration_path, class: "btn-login btn color-1 size-2 hover-2" do
-            %i.fa.fa-user
-            Profile
-      .login-header-block
-        .login-block
-          .be-drop-down.no-after.login-user-down
-            %img.login-user{:alt => "", :src => current_user.avatar[:small].url, width: 36}/
-            %span.be-dropdown-content
-              Hi,
-              %span=current_user&.nickname
+    .hide_on_small_screens
+      -if current_user
+        .login-header-block
+          .login-block
+            =link_to 'Logout', destroy_user_session_path, class: "btn-login btn color-1 size-2 hover-2", method: :delete
+        .login-header-block
+          .login-block
+            =link_to edit_user_registration_path, class: "btn-login btn color-1 size-2 hover-2" do
+              %i.fa.fa-user
+              Profile
+        .login-header-block
+          .login-block
+            .be-drop-down.no-after.login-user-down
+              %img.login-user{:alt => "", :src => current_user.avatar[:small].url, width: 36}/
+              %span.be-dropdown-content
+                Hi,
+                %span=current_user&.nickname
 
-    -else
-      .login-header-block
-        =link_to new_user_session_path, class: "btn-login btn color-1 size-2 hover-2" do
-          .login_block
-            %i.fa.fa-user
-            Log in
+      -else
+        .login-header-block
+          =link_to new_user_session_path, class: "btn-login btn color-1 size-2 hover-2" do
+            .login_block
+              %i.fa.fa-user
+              Log in

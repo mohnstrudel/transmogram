@@ -28,3 +28,19 @@
 .margin_bot_20{
   margin-bottom: 20px;
 }
+
+.margin_bot_2em{
+  margin-bottom: 2em;
+}
+
+@media screen and (max-width: 1200px) {
+  .hide_on_small_screens {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .hide_on_big_screens {
+    display: none !important;
+  }
+}
