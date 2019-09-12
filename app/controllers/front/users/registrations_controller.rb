@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+include Utility
 
 class Front::Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
@@ -10,9 +11,11 @@ class Front::Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do |resource|
+      Utility::Mailchimp.subscribe(resource)
+    end
+  end
 
   # GET /resource/edit
   # def edit

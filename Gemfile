@@ -41,9 +41,10 @@ gem 'audited'
 gem 'aws-sdk'
 gem 'devise'
 gem 'dotenv'
-gem "figaro"
-gem "fog-aws"
+gem 'figaro'
+gem 'fog-aws'
 gem 'friendly_id'
+gem 'gibbon'
 gem 'haml-rails'
 gem 'image_processing'
 gem 'impressionist'
