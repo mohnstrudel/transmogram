@@ -26,6 +26,7 @@ test:
 
 addons:
   chrome: stable
+  postgresql: "10"
 
 # uncomment and edit the following line if your project needs to run something other than `rake`:
 # script:
