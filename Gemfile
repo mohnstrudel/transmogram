@@ -57,6 +57,8 @@ gem 'pagy'
 gem 'placeholdit'
 # gem 'redis-rails'
 gem 'rollbar'
+gem 'rspec-rails'
+gem 'selenium-webdriver'
 gem "shrine"
 gem 'sidekiq'
 gem 'sitemap_generator'
@@ -73,6 +75,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'capybara'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'launchy'
 end
 
 group :development do

@@ -10,11 +10,19 @@ class User < ApplicationRecord
 
   acts_as_voter
 
+  after_create :subscribe
+
   include ImageUploader::Attachment.new(:avatar) # adds an `avatar` virtual attribute
   # mount_uploader :avatar, AvatarUploader
 
   def admin?
     return false if roles.nil?
     roles.fetch("admin")
+  end
+
+  private
+
+  def subscribe
+    Utility::Mailchimp.subscribe(self)
   end
 end
