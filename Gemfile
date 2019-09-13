@@ -62,6 +62,7 @@ gem 'selenium-webdriver'
 gem "shrine"
 gem 'sidekiq'
 gem 'sitemap_generator'
+gem 'sqlite3'
 gem 'verbs'
 gem 'whenever', require: false
 gem 'xray-rails'
