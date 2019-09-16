@@ -16,8 +16,9 @@
   /   %a{:href => "site-map.html"} Site Map
   / %li
   /   %a{:href => "organization.html"} Organization
-  %li.ad-work-li
-    =link_to 'Add Work', new_post_path, class: 'btn btn-large color-1 add-work-btn'
+  -unless(controller_name == 'static_pages' && action_name == 'home')
+    %li.ad-work-li#upload_pictures_header_button
+      =link_to 'UPLOAD TRANSMOGRAM PICTURES', new_post_path, class: 'btn btn-large color-1 add-work-btn'
   -if current_user
     %li.hide_on_big_screens.margin_bot_2em
       =link_to 'Profile', edit_user_registration_path, class: "btn btn-large color-1 add-work-btn login-btn"
@@ -27,3 +28,4 @@
   -else
     %li.ad-work-li.hide_on_big_screens
       =link_to 'Log in', new_user_session_path, class: 'btn btn-large color-1 add-work-btn login-btn'
+      =link_to 'Sign up', new_user_registration_path, class: "btn btn-large color-1 add-work-btn login-btn"

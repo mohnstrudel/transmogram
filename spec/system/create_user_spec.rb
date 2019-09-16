@@ -8,7 +8,7 @@ RSpec.describe "Create user flow", :type => :system do
   context 'when creating new user' do
     before do
       visit root_path
-      click_on 'sign up now'
+      click_on 'sign up'
     end
 
     it 'expects to redirect to users/sign_up and display proper fields' do

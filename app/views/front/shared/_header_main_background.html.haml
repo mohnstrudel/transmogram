@@ -6,8 +6,7 @@
     / %a.btn.color-1.size-1.hover-1
     /   %i.fa.fa-facebook>
     /   sign up via facebook
-    -unless current_user
-      =link_to new_user_registration_path, class: "btn color-3 size-1 hover-6", method: :get do
-        %i.fa.fa-lock>
-        sign up now
+    =link_to new_post_path, class: 'btn color-3 size-1 hover-6', method: :get do
+      %i.fa.fa-upload>
+      UPLOAD TRANSMOGRAM PICTURES
 / %p.alert.alert-success="hello"

@@ -26,3 +26,14 @@
 //= require bootstrap-fileinput
 //= require piexifjs
 //= require front/custom_plugins
+
+
+// $(window).scroll(function() {
+//   if('body').hasClass("home") {
+//     if ($(this).scrollTop() > 120) {
+//         $('#upload_pictures_header_button:hidden').stop(true, true).fadeIn(1100);
+//     } else {
+//         $('#upload_pictures_header_button').stop(true, true).fadeOut(1100);
+//     }
+//   }
+// });

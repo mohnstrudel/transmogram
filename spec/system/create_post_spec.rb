@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Creaet post flow", :type => :system do
+RSpec.describe "Create post flow", :type => :system do
   def fill_in_basic
     attach_file('files[]', File.join(Rails.root, '/spec/support/assets/picture.png'))
     fill_in 'post_title', with: 'My transmog title'
@@ -66,7 +66,7 @@ RSpec.describe "Creaet post flow", :type => :system do
       ["Druid", "Warlock"].map{|item| ClassType.create(value: item)}
       sign_in user
       visit root_path
-      click_on 'Add Work'
+      click_on 'UPLOAD TRANSMOGRAM PICTURES'
     end
 
     it 'expects not to have nickname and email fields for signed in users' do
