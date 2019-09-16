@@ -1,6 +1,6 @@
 .container.be-detail-container
   .row
-    .col-xs-12.col-md-12._editor-content_
+    .col-xs-12.col-md-offset-3.col-md-6._editor-content_
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
         .be-large-post
@@ -9,19 +9,20 @@
               %h3.info-block-label Sign in
           .be-large-post-align
             .row
-              .input-col.col-xs-12.col-sm-6
+              .input-col.col-xs-12.col-sm-12
                 .form-group.fg_icon.focus-2
                   .form-label Email
                   =f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input"
-              .input-col.col-xs-12.col-sm-6
+              .input-col.col-xs-12.col-sm-12
                 .form-group.focus-2
                   .form-label Password
                   =f.password_field :password, autocomplete: "current-password", class: "form-input"
-            -if devise_mapping.rememberable?
-              .row
+              -if devise_mapping.rememberable?
                 .input-col.col-xs-12.col-sm-12
                   .form-group.fg_icon.focus-2
                     .form-label Remember me?
                     =f.check_box :remember_me, class: "form-input"
 
         =f.submit "Log in", class: "btn full color-1 size-1 hover-1 add_section", id: 'perform_login'
+
+        = render "devise/shared/links"

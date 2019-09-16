@@ -26,6 +26,7 @@ class User < ApplicationRecord
       User.find_or_create_by(email: email) do |user|
         user.nickname = nickname
         user.password = password
+        user.initial_password = password
       end
     else
       User.create(email: Faker::Internet.email, nickname: Faker::Internet.username, password: password, roles: {"random_user" => true})

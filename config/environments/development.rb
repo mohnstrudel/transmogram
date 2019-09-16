@@ -79,4 +79,25 @@ Rails.application.configure do
     # Bullet.stacktrace_excludes = [ 'their_gem', 'their_middleware', ['my_file.rb', 'my_method'], ['my_file.rb', 16..20] ]
     # Bullet.slack = { webhook_url: 'https://hooks.slack.com/services/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', channel: '#web-development', username: 'Slack Nurse' }
   end
+
+  config.action_mailer.default_url_options = { :host => 'localhost', port: 3000}
+
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.delivery_method = :smtp
+
+  # Specify what domain to use for mailer URLs
+
+  config.action_mailer.smtp_settings = {
+   user_name: Figaro.env.mailer_user,
+   password: Figaro.env.mailer_password,
+   domain: 'yandex.ru',
+   address: Figaro.env.mailer_address,
+   port: 465,
+   authentication: :plain,
+   # enable_starttls_auto: true,
+   tls: true
+  }
 end

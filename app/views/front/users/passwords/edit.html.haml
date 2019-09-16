@@ -1,0 +1,25 @@
+.container.be-detail-container
+  .row
+    .col-xs-12.col-md-offset-3.col-md-6._editor-content_
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .be-large-post
+          .info-block.style-2
+            .be-large-post-align
+              %h3.info-block-label Change your password
+          .be-large-post-align
+            .row
+              .input-col.col-xs-12.col-sm-12
+                .form-group.fg_icon.focus-2
+                  .form-label New password
+                  -if @minimum_password_length
+                    %em="#{@minimum_password_length} characters minimum"
+                  =f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-input"
+              .input-col.col-xs-12.col-sm-12
+                .form-group.fg_icon.focus-2
+                  .form-label Confirm new password
+                  =f.password_field :password_confirmation, autofocus: true, autocomplete: "off", class: "form-input"
+
+        =f.submit "Change my password", class: "btn full color-1 size-1 hover-1 add_section", id: 'perform_login'
+
+        = render "devise/shared/links"
