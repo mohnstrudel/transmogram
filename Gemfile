@@ -5,8 +5,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
+
+
+# group :development, :production do
 # Use postgresql as the database for Active Record
 gem 'pg'
+# end
+
 # Use Puma as the app server
 gem 'puma', '4.0.1'
 # Use SCSS for stylesheets
