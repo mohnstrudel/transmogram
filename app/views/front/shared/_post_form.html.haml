@@ -10,7 +10,7 @@
       .block-subtitle Use one or multiple transmogrification pictures. Please select armor type and your character class.
       .contect-form.centered_narrow
         =form_with model: @post, class: "form-block", multipart: true, local: true do |f|
-          = f.hidden_field :user_id, value: current_user.id, class:'d-none'
+          = f.hidden_field :user_id, value: @user.id, class:'d-none'
           .row.margin_bot_20
             .col-xs-12.col-sm-12
               =f.fields_for :images do |images_fields|
@@ -43,4 +43,12 @@
                 =f.text_area :description, class: 'form-input', placeholder: "Insert your description there. Tags can be created using #-symbol. For example 'I love my #paladin #sunset set'"
               - unless action_name == "new"
                 = link_to 'Delete', post_path(@post), class: 'btn color-2 size-2 hover-1 pull-left', method: :delete, data: { confirm: 'Are you sure?' }
-              = f.submit class: 'btn color-1 size-2 hover-1 pull-right', style: "margin-right: 0px;"
+          -unless user_signed_in?
+            .row.margin_bot_20
+              .col-xs-12.col-sm-6
+                .form-group
+                  =text_field_tag "user[nickname]", "", class: "form-input", placeholder: "Your nickname (optional)"
+              .col-xs-12.col-sm-6
+                .form-group
+                  =email_field_tag "user[email]", "", class: "form-input", placeholder: "Your email (optional)"
+          = f.submit class: 'btn color-1 size-2 hover-1 pull-right', style: "margin-right: 0px;"

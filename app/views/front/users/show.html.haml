@@ -6,7 +6,7 @@
         .be-user-block.style-3
           .be-user-detail
             %a.be-ava-user.style-2
-              =image_tag @user.avatar[:small].url
+              =dig_avatar object: @user, version: "small"
             / %a.be-ava-left.btn.color-1.size-2.hover-1
             /   %i.fa.fa-plus>
             /   Follow

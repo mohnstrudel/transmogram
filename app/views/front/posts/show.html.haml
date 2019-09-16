@@ -63,7 +63,7 @@
           .be-user-block
             .be-user-detail
               %a.be-ava-user{:href => ""}
-                =image_tag @post_user.avatar[:small].url, style: "border-radius: 50%;"
+                =dig_avatar object: @post_user, version: "small", style: "border-radius: 50%;"
                 / %img{:alt => "", :src => current_user.avatar.url(:thumb), style: "border-radius: 50%;"}
               %p.be-use-name=@post_user.nickname
               / %span.be-user-info

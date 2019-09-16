@@ -10,6 +10,14 @@ module FrontHelper
     end
   end
 
+  def dig_avatar(object:, version: "small", css_class: nil, width: nil, height: nil, style: nil)
+    if object.avatar.present?
+      return image_tag(object.avatar[version.to_sym].url, class: css_class, style: style, width: width, height: height)
+    else
+      return placeholdit_image_tag "50", text: "N/A", background_color: '#E4CDAB', class: css_class, style: style, width: width, height: height
+    end
+  end
+
   def dig_images(object:, kount: :first, attribute: "images", width: nil, height: nil, version: "medium")
     # usage: in haml:
     # simple case -> = dig_images(object: post, version: "small")

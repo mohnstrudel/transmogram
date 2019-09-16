@@ -4,11 +4,12 @@ class Front::PostsController < FrontController
   before_action :find_post, only: [:upvote, :downvote, :edit, :update, :destroy]
 
   def new
-    unless current_user
-      redirect_to root_path
-      flash[:alarm] = "You must be logged in to create a new post. #{link_to 'Sign Up', new_user_registration_path} or #{link_to 'Log In', new_user_session_path}"
-    end
+    # unless current_user
+    #   redirect_to root_path
+    #   flash[:alarm] = "You must be logged in to create a new post. #{link_to 'Sign Up', new_user_registration_path} or #{link_to 'Log In', new_user_session_path}"
+    # end
     @post = Post.new
+    @user = user_signed_in? ? current_user : User.new
   end
 
   def show
@@ -28,6 +29,7 @@ class Front::PostsController < FrontController
   end
 
   def edit
+    @user = current_user
   end
 
   def update
@@ -49,7 +51,11 @@ class Front::PostsController < FrontController
   end
 
   def create
-      @post = Post.new(file_params)
+    @post = Post.new(file_params)
+
+    if @post.valid?
+      @post.user = User.find_or_create_with_params(params[:user])
+    end
 
     begin
       if @post.save
