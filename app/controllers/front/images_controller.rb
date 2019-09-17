@@ -5,7 +5,7 @@ class Front::ImagesController < FrontController
   end
 
   def index
-    redirect_to root_path unless current_user.admin?
+    redirect_to root_path unless current_user&.admin?
     @images = Image.where(active: false)
   end
 

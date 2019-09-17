@@ -15,4 +15,15 @@ RSpec.describe "User pages spec", :type => :system do
       expect(page).to have_content(user.nickname)
     end
   end
+
+  context 'when trying to access admin restricted pages' do
+    describe 'as regular user' do
+    end
+    describe 'as not signed in user' do
+      it 'expects user to redirect to root path' do
+        visit images_path
+        expect(current_path).to eq(root_path)
+      end
+    end
+  end
 end

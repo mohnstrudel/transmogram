@@ -54,7 +54,7 @@ class Front::PostsController < FrontController
     @post = Post.new(file_params)
 
     if @post.valid?
-      @post.user = User.find_or_create_with_params(params[:user])
+      @post.user = current_user || User.find_or_create_with_params(params[:user])
     end
 
     begin
@@ -91,6 +91,7 @@ class Front::PostsController < FrontController
         hash.merge!(SecureRandom.hex => { image_value: file })
       end
       # merge new images attributes with existing (`post_params` is whitelisted `params[:post]`)
+      post_params.permit!
       images_attributes = post_params[:images_attributes].to_h.merge(new_images_attributes)
       post_attributes  = post_params.merge(images_attributes: images_attributes)
 
@@ -105,7 +106,7 @@ class Front::PostsController < FrontController
   end
 
   def post_params
-    params.require(:post).permit(:description, :user_id, :title, :armor_type_id, :class_type_id,
+    params.require(:post).permit(:user_id, :description, :slug, :title, :armor_type_id, :class_type_id,
       images_attributes: [:id, :image_value, :_destroy, :post_id])
   end
 end
