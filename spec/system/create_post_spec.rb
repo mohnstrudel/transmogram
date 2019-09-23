@@ -40,6 +40,7 @@ RSpec.describe "Create post flow", :type => :system do
           .and change {User.count}.from(0).to(1)
 
         expect(Post.last.title).to eq("My transmog title")
+        expect(Post.last.user).to eq User.last
         expect(User.last.nickname).to eq 'Loli Pop User'
         expect(User.last.email).to eq 'Loli@Pop.User'.downcase
       end
@@ -53,6 +54,7 @@ RSpec.describe "Create post flow", :type => :system do
           .and change {User.count}.from(0).to(1)
 
         expect(Post.last.title).to eq("My transmog title")
+        expect(Post.last.user).to eq User.last
         expect(User.last.roles.fetch("random_user")).to eq true
       end
     end
@@ -86,6 +88,7 @@ RSpec.describe "Create post flow", :type => :system do
         click_button("Create Post")
       }.to change {Post.count}.from(0).to(1)
       expect(Post.last.title).to eq("My transmog title")
+      expect(Post.last.user).to eq user
     end
 
     it 'expects to raise errors when no data is provided' do

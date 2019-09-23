@@ -23,6 +23,9 @@ require 'capistrano/yarn'
 require 'capistrano/sitemap_generator'
 require "whenever/capistrano"
 
+require 'capistrano/sidekiq'
+# require 'capistrano/sidekiq/monit' #to require monit tasks # Only for capistrano3
+
 # Include tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:

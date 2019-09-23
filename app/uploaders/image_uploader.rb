@@ -7,12 +7,14 @@ class ImageUploader < Shrine
   plugin :versions   # enable Shrine to handle a hash of files
   plugin :delete_raw # delete processed files after uploading
 
+  plugin :backgrounding # for Sidekiq background jobs
+
   plugin :validation_helpers
   plugin :determine_mime_type
 
   Attacher.validate do
     validate_min_size 1, message: "must not be empty"
-    validate_max_size 10*1024*1024, message: "is too large (max is 10 MB)"
+    validate_max_size 10.megabytes, message: "is too large (max is 10 MB)"
     validate_mime_type_inclusion %w[image/jpeg image/png image/tiff]
     validate_extension_inclusion %w[jpg jpeg png tiff tif]
   end
@@ -32,4 +34,11 @@ class ImageUploader < Shrine
 
     versions
   end
+
+  # Attacher.promote do |data|
+  #   ShrineBackgrounding::PromoteJob.perform_async(data)
+  # end
+  # Attacher.delete do |data|
+  #   ShrineBackgrounding::DeleteJob.perform_async(data)
+  # end
 end

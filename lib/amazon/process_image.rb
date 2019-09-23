@@ -1,5 +1,5 @@
 require 'dotenv'
-require 'aws-sdk'
+# require 'aws-sdk'
 
 module Amazon
   class ProcessImage

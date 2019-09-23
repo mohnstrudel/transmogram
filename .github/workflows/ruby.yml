@@ -27,4 +27,3 @@ jobs:
         bundle
         yarn
         rspec
-    - name: Deploy to DigitalOcean

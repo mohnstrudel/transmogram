@@ -67,7 +67,7 @@ class Front::PostsController < FrontController
       end
     rescue => e
       logger.info "Posts controller ´create´ action. Error: #{e.inspect}"
-      flash[:alarm] = "Errors encountered: #{e.full_messages}"
+      flash[:alarm] = "Errors encountered: #{e.full_message}"
       redirect_to new_post_path
     end
   end
